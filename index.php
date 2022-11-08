@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+Hello World
+
 <html lang="en">
 
 <?php include('views/header/head.php'); ?>
