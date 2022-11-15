@@ -1,4 +1,4 @@
-    <script src="assets/js/scheduleView.js"></script>
+    <script src="assets/js/schedule.js"></script>
     
     <!-- Bootstrap core JavaScript-->
     <script src="assets/vendor/jquery/jquery.min.js"></script>

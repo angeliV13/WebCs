@@ -21,6 +21,10 @@
             case 'viewSchedule':
                 return "scheduling/viewSchedule.php";
                 break;
+                // Instructor Schedule
+            case 'instructorSchedule':
+                return "scheduling/instructorSchedule.php";
+                break;
         }
     }
 ?>

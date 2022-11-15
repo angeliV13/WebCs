@@ -6,7 +6,7 @@
     <div class="sidebar-brand-icon rotate-n-15">
         <i class="fas fa-calendar"></i>
     </div>
-    <div class="sidebar-brand-text mx-3">WEBCS</div>
+    <div class="sidebar-brand-text mx-10">WEBCS</div>
 </a>
 
 <!-- Divider -->
@@ -36,15 +36,43 @@
     <div id="collapseAccount" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Scheduling Options:</h6>
-            <a class="collapse-item" href="index.php?val=dashboard">Create Schedule</a>
-            <a class="collapse-item" href="index.php?val=dashboard">View Schedules</a>
-            <a class="collapse-item" href="index.php?val=dashboard">Updated Schedules</a>
-            <a class="collapse-item" href="index.php?val=dashboard">Approved Schedule</a>
+            <a class="collapse-item" href="index.php?val=dashboard">Add Account</a>
+            <a class="collapse-item" href="index.php?val=dashboard">Accounts Listing</a>
+            <a class="collapse-item" href="index.php?val=dashboard">My Account Settings</a>
 
         </div>
     </div>
 </li>
 
+<!-- Nav Item - Curriculum -->
+<li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCurriculum"
+        aria-expanded="true" aria-controls="collapseCurriculum">
+        <span>Curriculum</span>
+    </a>
+    <div id="collapseCurriculum" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">List of Courses:</h6>
+           <p> <a class="collapse-item" href="index.php?val=dashboard">BS Information Technology</a> </p>
+            <a class="collapse-item" href="index.php?val=dashboard">BS Science in Computer</a
+        </div>
+    </div>
+</li>
+
+<!-- Nav Item - Instructor -->
+<li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseGuestLecturers"
+        aria-expanded="true" aria-controls="collapseGuestLecturers">
+        <span>Guest Lecturers</span>
+    </a>
+    <div id="collapseGuestLecturers" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">List of Guest Lecturers:</h6>
+            <a class="collapse-item" href="index.php?val=dashboard">First Semester</a>
+            <a class="collapse-item" href="index.php?val=dashboard">Second Semester</a
+        </div>
+    </div>
+</li>
 
 <!-- Nav Item - Scheduling -->
 <li class="nav-item">
@@ -57,8 +85,8 @@
             <h6 class="collapse-header">Scheduling Options:</h6>
             <a class="collapse-item" href="index.php?val=createSchedule">Create Schedule</a>
             <a class="collapse-item" href="index.php?val=viewSchedule">View Schedules</a>
-            <a class="collapse-item" href="index.php?val=dashboard">Updated Schedules</a>
-            <a class="collapse-item" href="index.php?val=dashboard">Approved Schedule</a>
+            <a class="collapse-item" href="index.php?val=dashboard">Rooms</a>
+            
 
         </div>
     </div>
