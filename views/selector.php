@@ -10,6 +10,30 @@
             case 'dashboard':
                 return "dashboard.php";
                 break;
+                // ---------------------------------Account-------------------------------
+                // Create an Account 
+            case 'createAccount':
+                return "account/createaccount.php";
+                break;
+                // Accounts Listing
+            case 'accountsListing':
+                    return "account/accountsListing.php";
+                    break;
+                // ---------------------------------PROGRAM-------------------------------
+                // BSIT 
+            case 'progBSIT':
+                return "program/bsit.php";
+                break;
+
+                // BSCS
+            case 'progBSCS':
+                return "program/bscs.php";
+                break;
+                // ---------------------------------INSTRUCTORS-------------------------------
+                // Instructors
+            case 'instructors':
+                return "Faculty/instructors.php";
+                break;
 
                 // ---------------------------------SCHEDULING-------------------------------
                 // Create Schedule
@@ -17,13 +41,15 @@
                 return "scheduling/createSchedule.php";
                 break;
 
-                // View  Schedule
+                // View  Schedule 
             case 'viewSchedule':
                 return "scheduling/viewSchedule.php";
                 break;
-                // Instructor Schedule
-            case 'instructorSchedule':
-                return "scheduling/instructorSchedule.php";
+
+                // ----------------------------------LOG OUT--------------------------------
+                // Room
+            case 'room':
+                return "scheduling/room.php";
                 break;
         }
     }

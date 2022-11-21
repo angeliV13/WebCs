@@ -11,14 +11,14 @@
         </div>
         <div class="card-body">
             <div>
-                <form action="" method="post">
+                <form action="#" method="post">
                     <div class="row mb-3 ">
                         <div class="col-lg-3">
                             <label for="semester">Academic Year</label>
                             <select name="acadyear" id="acadyear">
-                                <option value="1">First</option>
-                                <option value="2">Second</option>
-                                <option value="3">Summer</option>
+                                <option value="">First</option>
+                                <option value="">Second</option>
+                                <option value="">Summer</option>
                             </select>
                         </div>
                         <div class="col-lg-3">
@@ -85,7 +85,7 @@
                         </div>
                     </div>
                     <div class="mt-2">
-                        <input class="btn btn-outline-danger px-5" type="button" name="genSched" id = "genSched" value="Generate Schedule">
+                        <input class="btn btn-outline-danger px-5" type="button" name="genSched" id="genSched" value="Generate Schedule">
                     </div>
                 </form>
             </div>

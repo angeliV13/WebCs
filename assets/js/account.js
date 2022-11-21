@@ -1,7 +1,6 @@
 $(document).ready( function () {
     var checkDB = true;
-
-    $('#viewSched').DataTable({
+    $('#viewAccount').DataTable({
         lengthChange: false,
         searching: false,
         processing: true,
@@ -13,7 +12,7 @@ $(document).ready( function () {
             {
                 checkDB: checkDB
             },
-            url: "controller/schedule.php", // json datasource
+            url: "controller/account.php", // json datasource
             type: "POST", // method  , by default get
         
         error: function () {
@@ -47,4 +46,3 @@ $(document).ready( function () {
     //     }
     // });
 }); 
-

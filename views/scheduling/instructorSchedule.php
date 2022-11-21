@@ -20,7 +20,6 @@
                             <option value="3">Summer</option>
                         </select>
                     </div>
-                    
                     <div>
                         <label for="itFirst">Sections of IT First Year</label>
                         <input type="number" name="itFirst" id="itFirst" min="0" max="10">
