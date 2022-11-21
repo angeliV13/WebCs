@@ -1,4 +1,5 @@
-    <script src="assets/js/schedule.js"></script>
+    
+
     
     <!-- Bootstrap core JavaScript-->
     <script src="assets/vendor/jquery/jquery.min.js"></script>
@@ -14,8 +15,8 @@
     <script src="assets/vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-    <!-- DataTables custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>
+    <script src="assets/js/schedule.js"></script>
+    <script src="assets/js/room.js"></script>
 
 
 

@@ -47,7 +47,7 @@
                                 <input type="position" class="form-control form-control-user" id="InputPosition"
                                     placeholder="Position">
                             </div>
-                            <a href="login.html" class="btn btn-primary btn-user btn-block" type = "submit" name = "create" >
+                            <a href="login.html" class="btn btn-primary btn-user btn-block" >
                                 Register Account
                             </a>
                             <hr>
