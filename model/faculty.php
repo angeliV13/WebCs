@@ -25,6 +25,7 @@
                 $data[] = [
                     $checkbox = '<input class="w-100" type="checkbox" name="check1" id="check'. $facNum .'">',
                     $count++,
+                    // $facNum,
                     $facID,
                     $facLName . ", " . $facFName . " " . $facMName,
                     ($facAvailability = "FT")? "Fulltime": $facAvailability,
@@ -65,10 +66,10 @@
     }
 
     //Adding faculty to Database
-    function addFaculty($facNum, $facID , $facFName, $facMName, $facLName, $facAvailability){
+    function addFaculty($facID , $facFName, $facMName, $facLName, $facAvailability){
 
         include('dbConnection.php');
-        $query = "INSERT INTO `tbl_faculty`(`facNum`, `facID`, `facFName`, `facMName`, `facLName`, `facAvailability`) VALUES ('". $facID ."','". $facNum."', '" .$facFName."','".$facMName."', '".$facLName."', '".$facAvailability."')"; 
+        $query = "INSERT INTO `tbl_faculty`(`facNum`, `facID`, `facLName`, `facFName`, `facMName`, `facAvailability`) VALUES (0, '". $facID ."', '" .$facLName."','".$facFName."', '".$facMName."', '".$facAvailability."')";
         var_dump($query);
         $sql = mysqli_query($conn, $query) or die("System Error: " . mysqli_error($conn));
 
@@ -81,8 +82,9 @@
 
         include('dbConnection.php');
         $query = "UPDATE `tbl_faculty`
-                    SET `facNum`='" . $facNum. "',`facID`='" . $facID. "',`facFName`='" . $facFName. "',`facMName`='" . $facMName. "',`facLName`='" . $facLName. "',`facAvailability`='" . $facAvailability. "'
+                    SET `facID`='" . $facID. "',`facFName`='" . $facFName. "',`facMName`='" . $facMName. "',`facLName`='" . $facLName. "',`facAvailability`='" . $facAvailability. "'
                     WHERE `facNum` = '". $facNum ."'"; //QUERY CODE
+        var_dump($query);
         $sql = mysqli_query($conn, $query) or die("System Error: " . mysqli_error($conn));
 
         return ($query);
@@ -93,7 +95,7 @@
 
         include('dbConnection.php');
         $query = "DELETE FROM `tbl_faculty`
-                    WHERE `facNum` = '". $facNum ."'"; //QUERY CODE //QUERY CODE
+                    WHERE  `facNum` = '". $facNum ."'"; //QUERY CODE //QUERY CODE
         $sql = mysqli_query($conn, $query) or die("System Error: " . mysqli_error($conn));
 
         return ($query);

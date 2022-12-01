@@ -40,17 +40,16 @@ $(document).ready( function () {
 $("#addITSubjectButton").click(function(){
     // alert("Success");
     var addITSubjectDB = true;
-
-    var addITSubjectDB  = $("#addITSubjectDB").val();
-    var subNum          = $("#addSubNumDB").val();
-    var courseCode      = $("#addCourseCodeDB").val();
-    var courseName      = $("#addCourseNameDB").val();
-    var subLec          = $("#addSubLecDB").val();
-    var subLab          = $("#addSubLabDB").val();
-    var subUnit         = $("#addSubUnitDB").val();
-    var courseID        = $("#input[name='courseID']:checked").val();
-    var semester        = $("#addSemesterDB").val();
-    var yearLevel       = $("#addYearLevelDB").val();
+    
+    var subNum          = $ ("#addsubNum").val();
+    var courseCode      = $("#addcourseCode").val();
+    var courseName      = $("#addcourseName").val();
+    var subLec          = $("#addsubLec").val();
+    var subLab          = $("#addsubLab").val();
+    var subUnit         = $("#addsubUnit").val();
+    var courseID        = $("#addcourseID").val();
+    var semester        = $("#addsemester").val();
+    var yearLevel       = $("#addyearLevel").val();
 
 
     $.ajax
@@ -74,6 +73,7 @@ $("#addITSubjectButton").click(function(){
         async: false,
         success: function(response)
         {
+            // console.log(response);
             alert("Subject Added Successfully");
             location.reload();
         },
@@ -85,29 +85,26 @@ $("#addITSubjectButton").click(function(){
 
 });
 
-// SHOW IT EDIT FORM
+// SHOW EDIT SUBJECTS
 function showITEditForm(subNum){
     // alert("Show Edit");
     var showITEditDB = true;
     // alert(subNum);
 
     // Clearing Edit Forms
-    $('#editCourseCode').val();
-    $('#editCourseName').val();
-    $('#editSubLec').val();
-    $('#editSubLab').val();
-    $('#editSubUnit').val();
-    $('editCourseID').val();
-    $('#editSemester').val();
-    $('#editYearLevel').val();
-  
+    $('#editsubNum').val();
+    $('#editcourseCode').val();
+    $('#editcourseName').val();
+    $('#editsubLec').val();
+    $('#editsubLab').val();
+    $('#editsubUnit').val();
+    $('editcourseID').val();
+    $('#editsemester').val();
+    $('#edityearLevel').val();
 
-    $("input[name='editCourseID']:radio[value='1']").attr("checked", false);
-    $("input[name='editCourseID']:radio[value='2']").attr("checked", false);
-    $("input[name='editCourseID']:radio[value='3']").attr("checked", false);
-    $("input[name='editCourseID']:radio[value='4']").attr("checked", false);
-    
-    
+    $("input[name='editsemester']:radio[value='1']").attr("checked", false);
+    $("input[name='editsemester']:radio[value='2']").attr("checked", false);
+
     $.ajax
     ({
         type: "POST",
@@ -122,32 +119,24 @@ function showITEditForm(subNum){
         {
 
             var subData = $.parseJSON(response);
+            $('#editsubNum').val(subData.subNum);
+            $('#editcourseCode').val(subData.courseCode);
+            $('#editcourseName').val(subData.courseName);
+            $('#editsubLec').val(subData.subLec);
+            $('#editsubLab').val(subData.subLab);
+            $('#editsubUnit').val(subData.subUnit);
+            $('#editcourseID').val(subData.courseID);
+            $('#editsemester').val(subData.semester);
+            $('#edityearLevel').val(subData.yearLevel);
 
-            $('#editSubNum').val(subData.subNum);
-            $('#editCourseCode').val(subData.courseCode);
-            $('#editCourseName').val(subData.courseName);
-            $('#editSubLec').val(subData.subLec);
-            $('#editSubLab').val(subData.subLab);
-            $('#editSubUnit').val(subData.subUnit);
-            $('#editCourseID').val(subData.courseID);
-            $('#editSemester').val(subData.semester);
-            $('#editYearLevel').val(subData.yearLevel);
+            if(subData.semester==1){
+                $("input[name='editsemester']:radio[value='1']").attr("checked", true);
+            }
+            else if(subData.semester==2){
+                $("input[name='editsemester']:radio[value='2']").attr("checked", true);
+            }
 
-            // alert(roomData.roomType)
-            if(subData.courseID==1){
-                $("input[name='editCourseID']:radio[value='1']").attr("checked", true);
-            }
-            else if(subData.courseID==2){
-                $("input[name='editCourseID']:radio[value='2']").attr("checked", true);
-            }
-            else if(subData.courseID==3){
-                $("input[name='editCourseID']:radio[value='3']").attr("checked", true);
-            }
-            else if(subData.courseID==4){
-                $("input[name='editCourseID']:radio[value='4']").attr("checked", true);
-            }
-           
-
+            
             $('#editITSubjectModal').modal('toggle');
         },
         error: function(response)
@@ -163,17 +152,15 @@ $("#editITSubjectButton").click(function(){
     // alert("Success");
     var editITSubjectDB = true;
 
-    var editITSubjectDB     = $("#editITSubjectDB").val();
-    var subNum          = $("#addSubNumDB").val();
-    var courseCode      = $("#addCourseCodeDB").val();
-    var courseName      = $("#addCourseNameDB").val();
-    var subLec          = $("#addSubLecDB").val();
-    var subLab          = $("#addSubLabDB").val();
-    var subUnit         = $("#addSubUnitDB").val();
-    var courseID        = $("#input[name='editCourseID']:checked").val();
-    var semester        = $("#addSemesterDB").val();
-    var yearLevel       = $("#addYearLevelDB").val();
-
+    var subNum          = $("#editsubNum").val();
+    var courseCode      = $("#editcourseCode").val();
+    var courseName      = $("#editcourseName").val();
+    var subLec          = $("#editsubLec").val();
+    var subLab          = $("#editsubLab").val();
+    var subUnit         = $("#editsubUnit").val();
+    var courseID        = $("#editcourseID").val();
+    var semester        = $("#editsemester").val();
+    var yearLevel       = $("#edityearLevel").val();
 
     // alert(roomType);
     $.ajax
@@ -183,7 +170,7 @@ $("#editITSubjectButton").click(function(){
         data:
         {
             editITSubjectDB  :   editITSubjectDB,
-            subNum         : subNum,
+            subNum          : subNum,
             courseCode     : courseCode,
             courseName     : courseName,
             subLec         : subLec,
@@ -196,6 +183,7 @@ $("#editITSubjectButton").click(function(){
         async: false,
         success: function(response)
         {
+            // console.log(response);
             alert("Update Successfully");
             location.reload();
         },
@@ -228,16 +216,16 @@ function showITDeleteForm(subNum){
             
             var subData = $.parseJSON(response);
             // console.log(response);
-            var deleteDB = true;
+            var deleteSubjectDB = true;
 
-            if(confirm("Are you sure you want to delete the subject " + subData.courseName +"? This cannot be undone.")){
+            if(confirm("Are you sure you want to delete the subject " + subData.subNum +"? This cannot be undone.")){
                 $.ajax
                 ({
                     type: "POST",
                     url: "controller/bsit.php",
                     data:
                     {
-                        deleteDB    :   deleteDB,
+                        deleteSubjectDB    :   deleteSubjectDB,
                         subNum     :   subNum,
                     },
                     async: false,

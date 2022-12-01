@@ -1,5 +1,5 @@
 $(document).ready( function () {
-    var scheduleCreate = true;
+    var scheduleCreateSelection = true;
     
     var semester = 1;
     var academicYear = 1;
@@ -11,7 +11,7 @@ $(document).ready( function () {
         url: "controller/createSchedule.php",
         data:
         {
-            scheduleCreate  :   scheduleCreate,
+            scheduleCreateSelection  :   scheduleCreateSelection,
             semester        :   semester,
             academicYear    :   academicYear,
             section         :   section,
@@ -46,230 +46,209 @@ $(document).ready( function () {
 });
 
 $('#selectSection').click(function(){
-    var selectedSection = $('#section').find(":selected").val();
-    if(selectedSection>0){
-        $('#createSchedCarousel').removeAttr('d-none');
-        // $.ajax({
-        //     type: "POST",
-        //     url: "controller/createSchedule.php",
-        //     data:
-        //     {
-        //         scheduleCreate  :   scheduleCreate,
-        //         semester        :   semester,
-        //         academicYear    :   academicYear,
-        //         section         :   section,
-        //     },
-        //     async: false,
-        //     success: function(response)
-        //     {
-        //         var acadYearArray = (JSON.parse(response)[0]);
-        //         var semesterArray = (JSON.parse(response)[1]);
-        //         var sectionArray = (JSON.parse(response)[2]);
-                
-        //         for (ay in acadYearArray) { 
-        //             $('#academicYear').append('<option value="' + acadYearArray[ay].ayID + '">' + acadYearArray[ay].ayName + '</option>');
-        //         }
+    var getSection = $('#section').find(":selected").val();
+    var getSemester = $('#semester').find(":selected").val();
+    var getAcadYear = $('#academicYear').find(":selected").val();
+    // console.log(getSemester);
 
-        //         for (sem in semesterArray) { 
-        //             console.log(semesterArray)
-        //             $('#semester').append('<option value="' + semesterArray[sem].semesterNum + '">' + semesterArray[sem].semesterName + '</option>');
-        //         }
+    if(getSection>0){
+        $('#createSchedCarousel').removeClass('d-none');
 
-        //         for (sec in sectionArray) { 
-        //             console.log(sectionArray)
-        //             $('#section').append('<option value="' + sectionArray[sec].secNum + '">' + sectionArray[sec].secName + '</option>');
-        //         }
+        var getSubjectDB = true;
+
+
+        $.ajax({
+            type: "POST",
+            url: "controller/createSchedule.php",
+            data:
+            {
+                getSubjectDB    :   getSubjectDB,
+                getSection      :   getSection,
+                getSemester     :   getSemester,
+                getAcadYear     :   getAcadYear,
+            },
+            async: false,
+            success: function(response)
+            {
+                var subjectArray = JSON.parse(response);
+                console.log(subjectArray);
                 
-        //     },
-        //     error: function(response)
-        //     {
-        //         console.log(response);
-        //     }
-        // });
+                $('#subjects').empty();
+                
+                for (subj in subjectArray) { 
+                    if(subjectArray[subj].subLab>0){
+                        $('#subjects').append('<a href="#createSchedCarousel" role="button" data-slide="next" id="lab'+subjectArray[subj].courseCode+'"\
+                        onclick="dropSub(\''+subjectArray[subj].courseCode+ '\',\'lab\','+ subjectArray[subj].subLab +',\''+subjectArray[subj].subType+ '\')"\
+                            <div class="col-xl-12 col-md-12 mb-4">\
+                                <div class="card border-left-success shadow h-100 py-1">\
+                                    <div class="card-body">\
+                                        <div class="row no-gutters align-items-center">\
+                                            <div class="col mr-2">\
+                                                <div class="text-sm font-weight-bold text-primary text-uppercase mb-1">\
+                                                    '+ subjectArray[subj].courseCode +'</div>\
+                                                <div class="text-xs font-weight-light text-secondary text-uppercase mb-1">\
+                                                    '+ subjectArray[subj].courseName +'</div>\
+                                            </div>\
+                                            <div class="col-auto">\
+                                                <div class="text-md font-weight-bold text-dark text-uppercase mb-1">\
+                                                    Laboratory</div>\
+                                                <div class="text-xs font-weight-light text-secondary text-uppercase mb-1">\
+                                                    '+ subjectArray[subj].subLab +' hours</div>\
+                                            </div>\
+                                        </div>\
+                                    </div>\
+                                </div>\
+                            </div>\
+                        </a>');
+                    }
+                    if(subjectArray[subj].subLec>0){
+                        $('#subjects').append('<a href="#createSchedCarousel" role="button" data-slide="next" id="lec'+subjectArray[subj].courseCode+'"\
+                        onclick="dropSub(\''+subjectArray[subj].courseCode+ '\',\'lec\','+ subjectArray[subj].subLec +',\''+subjectArray[subj].subType+ '\')"\
+                            <div class="col-xl-12 col-md-12 mb-4">\
+                                <div class="card border-left-warning shadow h-100 py-1">\
+                                    <div class="card-body">\
+                                        <div class="row no-gutters align-items-center">\
+                                            <div class="col mr-2">\
+                                                <div class="text-md font-weight-bold text-primary text-uppercase mb-1">\
+                                                    '+ subjectArray[subj].courseCode +'</div>\
+                                                <div class="text-xs font-weight-light text-secondary text-uppercase mb-1">\
+                                                    '+ subjectArray[subj].courseName +'</div>\
+                                            </div>\
+                                            <div class="col-auto">\
+                                                <div class="text-sm font-weight-bold text-dark text-uppercase mb-1">\
+                                                    Lecture</div>\
+                                                <div class="text-xs font-weight-light text-secondary text-uppercase mb-1">\
+                                                    '+ subjectArray[subj].subLec +' hours</div>\
+                                            </div>\
+                                        </div>\
+                                    </div>\
+                                </div>\
+                            </div>\
+                        </a>');
+                    }
+                }
+                
+            },
+            error: function(response)
+            {
+                console.log(response);
+            }
+        });
     }
     else{
         alert("No Section is Selected");
-        $('#createSchedCarousel').removeAttr('d-none');
-        $('#createSchedCarousel').attr('d-none');
+        $('#createSchedCarousel').removeClass('d-none');
+        $('#createSchedCarousel').addClass('d-none');
     }
 });
 
+function dropSub(courseCode, courseDelivery, hours, subType){
+    var checkAvailRoom = true;
+    var getSemester = $('#semester').find(":selected").val();
+    var getAcadYear = $('#academicYear').find(":selected").val();
 
-// ADD ROOM BUTTON
-// $("#addRoomButton").click(function(){
-//     // alert("Success");
-//     var addRoomDB = true;
+    $.ajax({
+        type: "POST",
+        url: "controller/createSchedule.php",
+        data:
+        {
+            checkAvailRoom  :   checkAvailRoom,
+            getSemester     :   getSemester,
+            getAcadYear     :   getAcadYear,
+            courseCode      :   courseCode,
+            courseDelivery  :   courseDelivery,
+            hours           :   hours,
+        },
+        async: false,
+        success: function(response)
+        {   
+            try{
+                var schedDataArray = JSON.parse(response);
+                console.log(schedDataArray);
 
-//     var roomName = $("#roomName").val();
-//     var roomLoc = $("#roomLoc").val();
-//     var roomType = $("input[name='roomType']:checked").val();
+                $('#rooms').empty();
+                for(count in schedDataArray){
+                    $('#rooms').append('<a href="#createSchedCarousel" role="button" data-slide="next" id="room'+schedDataArray[count][0][0]+'"\
+                    onclick="getCheck(\''+courseCode+ '\','+ hours +',\''+schedDataArray[count][0][0]+ '\', \''+subType+'\', \''+getSemester+'\', \''+getAcadYear+'\', \''+courseDelivery+'\')"\
+                        <div class="col-xl-12 col-md-12 mb-4">\
+                            <div class="card border-left-success shadow h-100 py-1">\
+                                <div class="card-body">\
+                                    <div class="row no-gutters align-items-center">\
+                                        <div class="col mr-2">\
+                                            <div class="text-sm font-weight-bold text-primary text-uppercase mb-1">\
+                                                '+ schedDataArray[count][0][3] +'</div>\
+                                            <div class="text-xs font-weight-light text-secondary text-uppercase mb-1">\
+                                                '+ schedDataArray[count][0][4] +'</div>\
+                                        </div>\
+                                    </div>\
+                                </div>\
+                            </div>\
+                        </div>\
+                    </a>');
+                }
 
-//     $.ajax
-//     ({
-//         type: "POST",
-//         url: "controller/room.php",
-//         data:
-//         {
-//             addRoomDB   :   addRoomDB,
-//             roomName    :   roomName,
-//             roomLoc     :   roomLoc,
-//             roomType    :   roomType,
-//         },
-//         async: false,
-//         success: function(response)
-//         {
-//             alert("Room Added Successfully");
-//             location.reload();
-//         },
-//         error: function(response)
-//         {
-//             console.log(response);
-//         }
-//     });
+                // dropRoom(schedDataArray, courseCode, courseDelivery, hours, getSemester, getAcadYear);
+            }
+            catch(e){
+                console.log(response);
+                console.log(e);
+            }
+            
+        }
+    });
+}
 
-// });
+function getCheck(courseCode, hours, roomNum, subType, getSemester, getAcadYear, courseDelivery){
+    var checkAvailFac = true;
 
+    $.ajax({
+        type: "POST",
+        url: "controller/createSchedule.php",
+        data:
+        {
+            checkAvailFac   :   checkAvailFac,
+            getSemester     :   getSemester,
+            getAcadYear     :   getAcadYear,
+            courseCode      :   courseCode,
+            hours           :   hours,
+            courseDelivery  :   courseDelivery,
+            roomNum         :   roomNum
+        },
+        async: false,
+        success: function(response)
+        {   
+            try{
+                var schedDataArray = JSON.parse(response);
+                console.log(schedDataArray);
 
-// // SHOW EDIT ROOM
-// function showRoomEditForm(roomNum){
-//     // alert("Show Edit");
-//     var showRoomEditDB = true;
-//     // alert(roomNum);
+                $('#faculty').empty();
+                for(count in schedDataArray){
+                    $('#faculty').append('<a href="#createSchedCarousel" role="button" id="fac'+schedDataArray[count][2][0]+'"\
+                    onclick="getCheck(\''+courseCode+ '\','+ hours +',\''+schedDataArray[count][2][0]+ '\' \''+subType+'\')"\
+                        <div class="col-xl-12 col-md-12 mb-4">\
+                            <div class="card border-left-success shadow h-100 py-1">\
+                                <div class="card-body">\
+                                    <div class="row no-gutters align-items-center">\
+                                        <div class="col mr-2">\
+                                            <div class="text-sm font-weight-bold text-primary text-uppercase mb-1">\
+                                                '+ schedDataArray[count][2][2] +'</div>\
+                                            <div class="text-xs font-weight-light text-secondary text-uppercase mb-1">\
+                                                '+ schedDataArray[count][2][3] +'</div>\
+                                        </div>\
+                                    </div>\
+                                </div>\
+                            </div>\
+                        </div>\
+                    </a>');
+                }
 
-//     // Clearing Edit Forms
-//     $('#editRoomNum').val();
-//     $('#editRoomName').val();
-//     $('#editRoomLoc').val();
-//     $("input[name='editRoomType']:radio[value='1']").attr("checked", false);
-//     $("input[name='editRoomType']:radio[value='2']").attr("checked", false);
-//     $("input[name='editRoomType']:radio[value='3']").attr("checked", false);
-
-
-//     $.ajax
-//     ({
-//         type: "POST",
-//         url: "controller/room.php",
-//         data:
-//         {
-//             showRoomEditDB  :   showRoomEditDB,
-//             roomNum      :   roomNum,
-//         },
-//         async: false,
-//         success: function(response)
-//         {
-
-//             var roomData = $.parseJSON(response);
-//             $('#editRoomNum').val(roomData.roomNum);
-//             $('#editRoomName').val(roomData.roomName);
-//             $('#editRoomLoc').val(roomData.roomLocation);
-//             // alert(roomData.roomType)
-//             if(roomData.roomType==1){
-//                 $("input[name='editRoomType']:radio[value='1']").attr("checked", true);
-//             }
-//             else if(roomData.roomType==2){
-//                 $("input[name='editRoomType']:radio[value='2']").attr("checked", true);
-//             }
-//             else if(roomData.roomType==3){
-//                 $("input[name='editRoomType']:radio[value='3']").attr("checked", true);
-//             }
-
-//             $('#editRoomModal').modal('toggle');
-//         },
-//         error: function(response)
-//         {
-//             console.log(response);
-//         }
-//     });
-
-// }
-
-// // EDIT ROOM BUTTON
-// $("#editRoomButton").click(function(){
-//     // alert("Success");
-//     var editRoomDB = true;
-
-//     var roomNum = $("#editRoomNum").val();
-//     var roomName = $("#editRoomName").val();
-//     var roomLoc = $("#editRoomLoc").val();
-//     var roomType = $("input[name='editRoomType']:checked").val();
-
-//     // alert(roomType);
-//     $.ajax
-//     ({
-//         type: "POST",
-//         url: "controller/room.php",
-//         data:
-//         {
-//             editRoomDB  :   editRoomDB,
-//             roomNum     :   roomNum,
-//             roomName    :   roomName,
-//             roomLoc     :   roomLoc,
-//             roomType    :   roomType,
-//         },
-//         async: false,
-//         success: function(response)
-//         {
-//             alert("Update Successfully");
-//             location.reload();
-//         },
-//         error: function(response)
-//         {
-//             console.log(response);
-//         }
-//     });
-
-// });
-
-// // SHOW DELETE ROOM
-// function showRoomDeleteForm(roomNum){
-//     // alert("Show Edit");
-//     var showRoomEditDB = true;
-//     // alert(roomNum);
-    
-//     $.ajax
-//     ({
-//         type: "POST",
-//         url: "controller/room.php",
-//         data:
-//         {
-//             showRoomEditDB  :   showRoomEditDB,
-//             roomNum     :   roomNum,
-//         },
-//         async: false,
-//         success: function(response)
-//         {
-
-//             var roomData = $.parseJSON(response);
-//             console.log(response);
-//             var deleteDB = true;
-
-//             if(confirm("Are you sure you want to delete the room " + roomData.roomName +"? This cannot be undone.")){
-//                 $.ajax
-//                 ({
-//                     type: "POST",
-//                     url: "controller/room.php",
-//                     data:
-//                     {
-//                         deleteDB    :   deleteDB,
-//                         roomNum     :   roomNum,
-//                     },
-//                     async: false,
-//                     success: function(response)
-//                     {
-//                         alert("Deleted Successfully");
-//                         location.reload();
-//                     },
-//                     error: function(response)
-//                     {
-//                         console.log(response);
-//                     }
-
-//                 });
-//             }
-//         },
-//         error: function(response)
-//         {
-//             console.log(response);
-//         }
-//     });
-// }
+                // dropRoom(schedDataArray, courseCode, courseDelivery, hours, getSemester, getAcadYear);
+            }
+            catch(e){
+                console.log(response);
+                console.log(e);
+            }
+            
+        }
+    });
+}

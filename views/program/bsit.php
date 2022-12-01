@@ -19,9 +19,9 @@
                     <table class="table table-bordered" id="viewItSubject" width="100%" cellspacing="0">
                          <thead>
                             <tr class="text-center">
-                                <!-- <th>
+                                <th>
                                     <input class="w-100" type="checkbox" name="check1" id="check1">
-                                </th> -->
+                                </th>
                                 <th>No.</th>
                                 <th>Course Code</th>
                                 <th>Course Name</th>   
@@ -75,87 +75,70 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                    <!-- <div class="d-flex justify-content-between mb-4">
+                        <label for="addsubNum ">Subject Number</label>
+                        <input type="text" name="addsubNum" id="addsubNum" maxlength="50">
+                    </div> -->
                     <!-- Course Code-->
                     <div class="d-flex justify-content-between mb-4">
-                        <label for="courseCode">Course Code</label>
-                        <input type="text" name="addCourseCode" id="addCourseCode" maxlength="50">
+                        <label for="addcourseCode">Course Code</label>
+                        <input type="text" name="addcourseCode" id="addcourseCode" maxlength="50">
                     </div>
 
                     <!-- Course Name -->
                     <div class="d-flex justify-content-between mb-4">
-                        <label for="courseName"> Course Name </label>
-                        <input type="text" name="addCourseName" id="addCourseName" maxlength="50">
+                        <label for="addcourseName"> Course Name </label>
+                        <input type="text" name="addcourseName" id="addcourseName" maxlength="50">
                     </div>
 
                     <!-- Subject Lecture-->
                     <div class="d-flex justify-content-between mb-4">
-                        <label for="subLec"> Lecture </label>
-                        <input type="text" name="addSubLecDB" id="addSubLecDB" maxlength="50">
+                        <label for="addsubLec"> Lecture </label>
+                        <input type="text" name="addsubLec" id="addsubLec" maxlength="50">
                     </div>
 
                     <!-- Subject Laboratory-->
                     <div class="d-flex justify-content-between mb-4">
-                        <label for="subLab"> Laboratory </label>
-                        <input type="text" name="addSubLab" id="addSubLab" maxlength="50">
+                        <label for="addsubLab"> Laboratory </label>
+                        <input type="text" name="addsubLab" id="addsubLab" maxlength="50">
                     </div>
 
                     <!-- Subject Units-->
                     <div class="d-flex justify-content-between mb-4">
-                        <label for="subUnit"> Unit </label>
-                        <input type="text" name="addSubUnit" id="addSubUnit" maxlength="50">
+                        <label for="addsubUnit"> Unit </label>
+                        <input type="text" name="addsubUnit" id="addsubUnit" maxlength="50">
                     </div>
 
                     <!-- Year Level-->
                     <div class="d-flex justify-content-between mb-5">
-                        <label for="yearLevel"> Year Level</label>
-                        <input type="text" name="addYearLevel" id="addYearLevel" maxlength="50">
+                        <label for="addyearLevel"> Year Level</label>
+                        <input type="text" name="addyearLevel" id="addyearLevel" maxlength="50">
                     </div>
 
                     <!-- Course ID -->
-                   <div class="d-flex justify-content-between mb-1">
-                        <label for="courseID">Course ID</label>
-                        <div class="combo-box justify-content-between mb-2">
-
-                            <div class="mr-2">
-                                <input type="radio" name="addCourseID" id="addCourseID">
-                                <label for="addCourseID">BSIT</label>
-                            </div>
-                            <div class="mr-2">
-                                <input type="radio" name="addCourseID" id="addCourseID">
-                                <label for="addCourseID">BSCS</label>
-                            </div>
-                            <div class="mr-2">
-                                <input type="radio" name="addCourseID" id="addCourseID">
-                                <label for="addCourseID">BSIT-BA</label>
-                            </div>
-                            <div class="mr-2">
-                                <input type="radio" name="addCourseID" id="addCourseID">
-                                <label for="addCourseID">BSIT-SM</label>
-                            </div>
-                            <div class="mr-2">
-                                <input type="radio" name="addCourseID" id="addCourseID">
-                                <label for="addCourseID">BSIT-NT</label>
-                            </div>
-                        </div>
+                   <<div class="d-flex justify-content-between mb-5">
+                        <label for="addcourseID"> Course ID</label>
+                        <input type="text" name="addcourseID" id="addcourseID" maxlength="50">
                     </div>
+
                     <!-- Subject Semester-->
                     <div class="d-flex justify-content-between mb-1">
-                        <label for="semester">Semester</label>
+                        <label for="addsemester">Semester</label>
                         <div class="d-flex">
                             <div class="mr-2">
-                                <input type="radio" name="addSemester" id="addSemester">
-                                <label for="addSemester">1st Semester</label>
+                                <input type="radio" name="addsemester" id="addsemester" value = "1">
+                                <label for="addsemester">1st Semester</label>
                             </div>
                             <div class="mr-2">
-                                <input type="radio" name="addSemester" id="addSemester">
-                                <label for="addSemester">2nd Semester</label>
+                                <input type="radio" name="addsemester" id="addsemester" value = "2">
+                                <label for="addsemester">2nd Semester</label>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <button class="btn btn-danger" type="button" id="addSubjectButton">Add Subject</button>
+                    <button class="btn btn-danger" type="button" id="addITSubjectButton">Add Subject</button>
                 </div>
             </form>
         </div>
@@ -175,69 +158,50 @@
             </div>
             <form>
                 <div class="modal-body">
-                    <!-- SubNum -->
-                    <div class="d-flex justify-content-between mb-4 hidden">
-                        <label for="subNum">Subject Number</label>
-                        <input type="text" name="editsubNum" id="editSubNum" maxlength="50">
+                    <div class="d-none justify-content-between mb-4">
+                        <label for="editsubNum ">Subject Number</label>
+                        <input type="text" name="editsubNum" id="editsubNum" maxlength="50">
                     </div>
-
                    <!-- Course Code-->
                    <div class="d-flex justify-content-between mb-4">
-                        <label for="editCourseCode">Course Code</label>
-                        <input type="text" name="editCourseCode" id="editCourseCode" maxlength="50">
+                        <label for="editcourseCode">Course Code</label>
+                        <input type="text" name="editcourseCode" id="editcourseCode" maxlength="50">
                     </div>
                     
                     <!-- Course Name -->
                     <div class="d-flex justify-content-between mb-4">
-                        <label for="editCourseName"> Course Name </label>
-                        <input type="text" name="editCourseName" id="editCourseName" maxlength="50">
+                        <label for="editcourseName"> Course Name </label>
+                        <input type="text" name="editcourseName" id="editcourseName" maxlength="50">
                     </div>
 
                     <!-- Subject Lecture-->
                     <div class="d-flex justify-content-between mb-4">
                         <label for="editsubLec"> Lecture </label>
-                        <input type="text" name="editsubLec" id="editSubLec" maxlength="50">
+                        <input type="text" name="editsubLec" id="editsubLec" maxlength="50">
                     </div>
 
                     <!-- Subject Laboratory-->
                     <div class="d-flex justify-content-between mb-4">
-                        <label for="subLab"> Laboratory </label>
-                        <input type="text" name="editsubLab" id="editSubLab" maxlength="50">
+                        <label for="editsubLab"> Laboratory </label>
+                        <input type="text" name="editsubLab" id="editsubLab" maxlength="50">
                     </div>
 
                     <!-- Subject Units-->
                     <div class="d-flex justify-content-between mb-4">
-                        <label for="subUnit"> Unit </label>
-                        <input type="text" name="editSubUnit" id="editSubUnit" maxlength="50">
+                        <label for="editsubUnit"> Unit </label>
+                        <input type="text" name="editsubUnit" id="editsubUnit" maxlength="50">
                     </div>
 
                     <!-- Year Level-->
                     <div class="d-flex justify-content-between mb-5">
-                        <label for="editYearLevel"> Year Level</label>
-                        <input type="text" name="editYearLevel" id="editYearLevel" maxlength="50">
+                        <label for="edityearLevel"> Year Level</label>
+                        <input type="text" name="edityearLevel" id="edityearLevel" maxlength="50">
                     </div>
 
                     <!-- Course ID -->
-                   <div class="d-flex justify-content-between mb-1">
-                        <label for="editCourseID">Course ID</label>
-                        <div class="d-flex">
-                            <div class="mr-2">
-                                <input type="radio" name="editCourseID" id="editBSIT" value = "1">
-                                <label for="editCourseID">BSIT</label>
-                            </div>
-                            <div class="mr-2">
-                                <input type="radio" name="editCourseID" id="editBsitBA" value = "2">
-                                <label for="editCourseID">BSIT-BA</label>
-                            </div>
-                            <div class="mr-2">
-                                <input type="radio" name="editCourseID" id="editBsitSM" value = "3">
-                                <label for="editRoomType">BSIT-SM</label>
-                            </div>
-                            <div class="mr-2">  
-                                <input type="radio" name="editCourseID" id="editBsitNT" value = "4">
-                                <label for="editRoomType">BSIT-NT</label>
-                            </div>
-                        </div>
+                    <div class="d-flex justify-content-between mb-5">
+                        <label for="editcourseID"> Course ID</label>
+                        <input type="text" name="editcourseID" id="editcourseID" maxlength="50">
                     </div>
                     
                     <!-- Year Level-->
@@ -245,11 +209,11 @@
                         <label for="editsemester">Semester</label>
                         <div class="d-flex">
                             <div class="mr-2">
-                                <input type="radio" name="editSemester" id="editSemester">
+                                <input type="radio" name="editsemester" id="editsemester" value = "1">
                                 <label for="editsemester">1st Semester</label>
                             </div>
                             <div class="mr-2">
-                                <input type="radio" name="semester" id="editSemester">
+                                <input type="radio" name="editsemester" id="editsemester" value = "2">
                                 <label for="editsemester">2nd Semester</label>
                             </div>
                         </div>
@@ -258,7 +222,7 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <button class="btn btn-danger" type="button" id="editBsitSubjectButton">Update Subject</button>
+                    <button class="btn btn-danger" type="button" id="editITSubjectButton">Update Subject</button>
                 </div>
             </form>
         </div>

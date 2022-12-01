@@ -27,7 +27,7 @@
 
 
 
-    <!-- Charting plugins -->s
+    <!-- Charting plugins -->
     <script src="assets/vendor/chart.js/Chart.min.js"></script>
 
     <!-- Charting custom scripts -->

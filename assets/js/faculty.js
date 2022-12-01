@@ -41,13 +41,12 @@ $("#addFacultyButton").click(function(){
     // alert("Success");
     var addFacultyDB = true;
 
-    var addFacultyDB  = $("#addFacultyDB").val();
-    var facNum   = $("#addFacNumDB").val();
-    var facID    = $("#addFacIDDB").val();
-    var facFName  = $("#addFacFNameDB").val();
-    var facMName = $("#addFacMNameDB").val();
-    var facLName = $("#addFacLNameDB").val();
-    var facAvailability = $("#addFacAvailabilityDB").val();
+    var facNum   = $("#addfacNum").val();
+    var facID    = $("#addfacID").val();
+    var facFName  = $("#addfacFName").val(); 
+    var facMName = $("#addfacMName").val();
+    var facLName = $("#addfacLName").val();
+    var facAvailability = $("addfacAvailability").val();
 
     $.ajax
     ({
@@ -61,11 +60,12 @@ $("#addFacultyButton").click(function(){
             facFName : facFName,
             facMName : facMName,
             facLName : facLName,
-            facAvailability : facLAvailability,
+            facAvailability : facAvailability,
         },
         async: false,
         success: function(response)
         {
+            // console.log(response);
             alert("Faculty Added Successfully");
             location.reload();
         },
@@ -85,20 +85,14 @@ function showFacultyEditForm(facNum){
     // alert(roomNum);
 
     // Clearing Edit Forms
-    $('#editfacNum').val();
+    $('#editfacNum').val(); 
     $('#editfacID').val();
     $('#editfacType').val();
     $('#editfacFName').val();
     $('#editfacMName').val();
     $('#editfacLName').val();
     $('#editfacAvailability').val();
-    $("input[name='editRoomType']:radio[value='1']").attr("checked", false);
-    $("input[name='editRoomType']:radio[value='2']").attr("checked", false);
-    $("input[name='editRoomType']:radio[value='3']").attr("checked", false);
-    $("input[name='editRoomType']:radio[value='4']").attr("checked", false);
-    $("input[name='editRoomType']:radio[value='5']").attr("checked", false);
-    $("input[name='editRoomType']:radio[value='6']").attr("checked", false);
-    $("input[name='editRoomType']:radio[value='8']").attr("checked", false);
+    $("input[name='editfacAvailability']:radio[value='FT']").attr("checked", false);
 
 
     $.ajax
@@ -121,17 +115,7 @@ function showFacultyEditForm(facNum){
             $('#editfacMName').val(facData.facMName);
             $('#editfacLName').val(facData.facLName);
             $('#editfacAvailability').val(facData.facAvailability);
-           
-            // alert(roomData.roomType)
-            if(facData.facType==1){
-                $("input[name='editfacType']:radio[value='1']").attr("checked", true);
-            }
-            else if(facData.facType==2){
-                $("input[name='editfacType']:radio[value='2']").attr("checked", true);
-            }
-            else if(roomData.roomType==3){
-                $("input[name='editfacType']:radio[value='3']").attr("checked", true);
-            }
+            $("input[name='editfacAvailability']:radio[value='FT']").attr("checked", true);
 
             $('#editFacultyModal').modal('toggle');
         },
@@ -143,19 +127,17 @@ function showFacultyEditForm(facNum){
 
 }
 
-// EDIT ROOM BUTTON
+// EDIT FACULTY BUTTON
 $("#editFacultyButton").click(function(){
     // alert("Success");
     var editFacultyDB = true;
 
-    var editFacultyDB  = $("#addFacultyDB").val();
-    var facNum   = $("#addFacNumDB").val();
-    var facID    = $("#addFacIDDB").val();
-    var facFName  = $("#addFacFNameDB").val();
-    var facMName = $("#addFacMNameDB").val();
-    var facLName = $("#addFacLNameDB").val();
-    var facAvailability = $("#addFacAvailabilityDB").val();
-
+    var facNum   = $("#editfacNum").val();
+    var facID    = $("#editfacID").val();
+    var facFName  = $("#editfacFName").val();
+    var facMName = $("#editfacMName").val();
+    var facLName = $("#editfacLName").val();
+    var facAvailability = $("#editfacAvailability").val();
     // alert(roomType);
     $.ajax
     ({
@@ -174,8 +156,9 @@ $("#editFacultyButton").click(function(){
         async: false,
         success: function(response)
         {
-            alert("Update Successfully");
-            location.reload();
+            console.log(response);
+            // alert("Update Successfully");
+            // location.reload();
         },
         error: function(response)
         {
@@ -205,7 +188,7 @@ function showFacultyDeleteForm(facNum){
 
             var facultyData = $.parseJSON(response);
             // console.log(response);
-            var deleteDB = true;
+            var deleteFacultyDB = true;
 
             if(confirm("Are you sure you want to delete the faculty " + facultyData.facNum +"? This cannot be undone.")){
                 $.ajax
@@ -214,12 +197,13 @@ function showFacultyDeleteForm(facNum){
                     url: "controller/faculty.php",
                     data:
                     {
-                        deleteDB    :   deleteDB,
+                        deleteFacultyDB    :   deleteFacultyDB,
                         facNum     :   facNum,
                     },
                     async: false,
                     success: function(response)
                     {
+                        // console.log(response);
                         alert("Deleted Successfully");
                         location.reload();
                     },

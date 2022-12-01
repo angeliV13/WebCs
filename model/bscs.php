@@ -70,12 +70,12 @@
     }
 
     //Adding subjects to Database
-    function addSubject($subNum , $courseCode, $courseName, $subLec, $subLab, $subUnit, $courseID, $semester, $yearLevel){
+    function addSubject($courseCode, $courseName, $subLec, $subLab, $subUnit, $courseID, $semester, $yearLevel){
 
         include('dbConnection.php');
-        $query = "INSERT INTO `tbl_subject`(`subNum`, `courseCode`, `courseName`, `subLec`, `subLab`, `subUnit`, `semester`, `yearLevel`) VALUES ('0','".$subNum."','".$courseCode."','".$courseName."','".$subLec."','".$subLab."','".$subUnit."',`courseID`='" .$courseID. "',`'".$semester."','".$yearLevel."')"; 
+        $query = "INSERT INTO `tbl_subject`(`subNum`, `courseCode`, `courseName`, `subLec`, `subLab`, `subUnit`, `semester`, `yearLevel`) VALUES (0,'".$courseCode."','".$courseName."','".$subLec."','".$subLab."','".$subUnit."','" .$courseID. "',`'".$semester."','".$yearLevel."')"; 
         $sql = mysqli_query($conn, $query) or die("System Error: " . mysqli_error($conn));
-        
+
         return ($query);
     }
 
@@ -86,8 +86,9 @@
 
         include('dbConnection.php');
         $query = "UPDATE `tbl_subject`
-                    SET `subNum`='" . $subNum . "',`courseCode`='" . $courseCode . "',`courseName`='" . $courseName . "',`subLec`='" . $subLec . "',`subLab`='" .$subLab. "',`subUnit`='" .$subUnit. "',`courseID`='" .$courseID. "',`semester`='" .$semester. "',`yearLevel`='" .$yearLevel. "';
+                    SET `courseCode`='" . $courseCode . "',`courseName`='" . $courseName . "',`subLec`='" . $subLec . "',`subLab`='" .$subLab. "',`subUnit`='" .$subUnit. "',`courseID`='" .$courseID. "',`semester`='" .$semester. "',`yearLevel`='" .$yearLevel. "'
                     WHERE `subNum` = '". $subNum ."'"; //QUERY CODE
+        var_dump($query);
         $sql = mysqli_query($conn, $query) or die("System Error: " . mysqli_error($conn));
 
         return ($query);
@@ -98,7 +99,7 @@
 
         include('dbConnection.php');
         $query = "DELETE FROM `tbl_subject`
-                    WHERE `subNum` = '". $subNum ."'"; //QUERY CODE
+                    WHERE subNum = '". $subNum ."'"; //QUERY CODE
         $sql = mysqli_query($conn, $query) or die("System Error: " . mysqli_error($conn));
 
         return ($query);

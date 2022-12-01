@@ -35,21 +35,20 @@ $(document).ready( function () {
     });
 });
 
-// ADD ROOM BUTTON
-$("#addSubjectButton").click(function(){
+// ADD subject BUTTON
+$("#addCsSubjectButton").click(function(){
     // alert("Success");
-    var addSubjectDB = true;
+    var addCsSubjectDB = true;
 
-    var addSubjectDB  = $("#addSubjectDB").val();
-    var subNum          = $("#addSubNumDB").val();
-    var courseCode      = $("#addCourseCodeDB").val();
-    var courseName      = $("#addCourseNameDB").val();
-    var subLec          = $("#addSubLecDB").val();
-    var subLab          = $("#addSubLabDB").val();
-    var subUnit         = $("#addSubUnitDB").val();
-    var courseID        = $("#addCourseIDDB").val();
-    var semester        = $("#addSemesterDB").val();
-    var yearLevel       = $("#addYearLevelDB").val();
+    var subNum          = $ ("#addsubNum").val();
+    var courseCode      = $("#addcourseCode").val();
+    var courseName      = $("#addcourseName").val();
+    var subLec          = $("#addsubLec").val();
+    var subLab          = $("#addsubLab").val();
+    var subUnit         = $("#addsubUnit").val();
+    var courseID        = $("#addcourseID").val();
+    var semester        = $("#addsemester").val();
+    var yearLevel       = $("#addyearLevel").val();
 
     $.ajax
     ({
@@ -57,7 +56,7 @@ $("#addSubjectButton").click(function(){
         url: "controller/bscs.php",
         data:
         {
-            addSubjectDB :   addSubjectDB,
+            addCsSubjectDB :   addCsSubjectDB,
             subNum         : subNum,
             courseCode     : courseCode,
             courseName     : courseName,
@@ -66,8 +65,9 @@ $("#addSubjectButton").click(function(){
             subUnit        : subUnit,
             courseID       : courseID,
             semester       : semester,
+            yearLevel      : yearLevel,
 
-            yearLevel : yearLevel,
+            
         },
         async: false,
         success: function(response)
@@ -90,24 +90,18 @@ function showCsEditForm(subNum){
     // alert(subNum);
 
     // Clearing Edit Forms
-    $('#editSubNum').val();
-    $('#editCourseCode').val();
-    $('#editCourseName').val();
-    $('#editSubLec').val();
-    $('#editSubLab').val();
-    $('#editSubUnit').val();
-    $('editCourseID').val();
-    $('#editSemester').val();
-    $('#editYearLevel').val();
+    $('#editsubNum').val();
+    $('#editcourseCode').val();
+    $('#editcourseName').val();
+    $('#editsubLec').val();
+    $('#editsubLab').val();
+    $('#editsubUnit').val();
+    $('editcourseID').val();
+    $('#editsemester').val();
+    $('#edityearLevel').val();
 
-    $("input[name='editsubType']:radio[value='1']").attr("checked", false);
-    $("input[name='editsubType']:radio[value='2']").attr("checked", false);
-    $("input[name='editsubType']:radio[value='3']").attr("checked", false);
-    $("input[name='editsubType']:radio[value='4']").attr("checked", false);
-    $("input[name='editsubType']:radio[value='5']").attr("checked", false);
-    $("input[name='editsubType']:radio[value='6']").attr("checked", false);
-    $("input[name='editsubType']:radio[value='7']").attr("checked", false);
-    $("input[name='editsubType']:radio[value='8']").attr("checked", false);
+    $("input[name='editsemester']:radio[value='1']").attr("checked", false);
+    $("input[name='editsemester']:radio[value='2']").attr("checked", false);
 
 
     $.ajax
@@ -124,45 +118,23 @@ function showCsEditForm(subNum){
         {
 
             var subData = $.parseJSON(response);
-            $('#editSubNum').val(subData.subNum);
-            $('#editCourseCode').val(subData.courseCode);
-            $('#editCourseName').val(subData.courseName);
-            $('#editSubLec').val(subData.subLec);
-            $('#editSubLab').val(subData.subLab);
-            $('#editSubUnit').val(subData.subUnit);
-            $('#editCourseID').val(subData.courseID);
-            $('#editSemester').val(subData.semester);
-            $('#editYearLevel').val(subData.yearLevel);
-           
-           
-            // // alert(roomData.roomType)
-            // if(subData.subType==1){
-            //     $("input[name='editsubType']:radio[value='1']").attr("checked", true);
-            // }
-            // else if(subData.subType==2){
-            //     $("input[name='editsubType']:radio[value='2']").attr("checked", true);
-            // }
-            // else if(subType.subType==3){
-            //     $("input[name='editsubType']:radio[value='3']").attr("checked", true);
-            // }
-            // else if(subType.subType==3){
-            //     $("input[name='editsubType']:radio[value='3']").attr("checked", true);
-            // }
-            // else if(subType.subType==3){
-            //     $("input[name='editsubType']:radio[value='3']").attr("checked", true);
-            // }
-            // else if(subType.subType==3){
-            //     $("input[name='editsubType']:radio[value='3']").attr("checked", true);
-            // }
-            // else if(subType.subType==3){
-            //     $("input[name='editsubType']:radio[value='3']").attr("checked", true);
-            // }
-            // else if(subType.subType==3){
-            //     $("input[name='editsubType']:radio[value='3']").attr("checked", true);
-            // }
-            // else if(subType.subType==3){
-            //     $("input[name='editsubType']:radio[value='3']").attr("checked", true);
-            // }
+            $('#editsubNum').val(subData.subNum);
+            $('#editcourseCode').val(subData.courseCode);
+            $('#editcourseName').val(subData.courseName);
+            $('#editsubLec').val(subData.subLec);
+            $('#editsubLab').val(subData.subLab);
+            $('#editsubUnit').val(subData.subUnit);
+            $('#editcourseID').val(subData.courseID);
+            $('#editsemester').val(subData.semester);
+            $('#edityearLevel').val(subData.yearLevel);
+
+            // alert(subData.editcourseID)
+            if(subData.semester==1){
+                $("input[name='editsemester']:radio[value='1']").attr("checked", true);
+            }
+            else if(subData.semester==2){
+                $("input[name='editsemester']:radio[value='2']").attr("checked", true);
+            }
 
             $('#editCsSubjectModal').modal('toggle');
         },
@@ -173,6 +145,54 @@ function showCsEditForm(subNum){
     });
 
 }
+// EDIT SUBJECT BUTTON
+$("#editCsSubjectButton").click(function(){
+    // alert("Success");
+    var editCsSubjectDB = true;
+
+    var subNum          = $("#editsubNum").val();
+    var courseCode      = $("#editcourseCode").val();
+    var courseName      = $("#editcourseName").val();
+    var subLec          = $("#editsubLec").val();
+    var subLab          = $("#editsubLab").val();
+    var subUnit         = $("#editsubUnit").val();
+    var courseID        = $("#editcourseID").val();
+    var semester        = $("#editsemester").val();
+    var yearLevel       = $("#edityearLevel").val();
+
+
+    // alert(roomType);
+    $.ajax
+    ({
+        type: "POST",
+        url: "controller/bsit.php",
+        data:
+        {
+            editCsSubjectDB  :   editCsSubjectDB,
+            subNum          : subNum,
+            courseCode     : courseCode,
+            courseName     : courseName,
+            subLec         : subLec,
+            subLab         : subLab,
+            subUnit        : subUnit,
+            courseID       : courseID,
+            semester       : semester,
+            yearLevel      : yearLevel,
+        },
+        async: false,
+        success: function(response)
+        {
+            alert("Update Successfully");
+            location.reload();
+        },
+        error: function(response)
+        {
+            console.log(response);
+        }
+    });
+
+});
+
 // SHOW DELETE ROOM
 function showCsDeleteForm(subNum){
     // alert("Show Edit");
@@ -193,16 +213,16 @@ function showCsDeleteForm(subNum){
         {
             var subData = $.parseJSON(response);
             // console.log(response);
-            var deleteDB = true;
+            var deleteSubjectDB = true;
 
-            if(confirm("Are you sure you want to delete this " + subData.courseName +" ? It cannot be undone.")){
+            if(confirm("Are you sure you want to delete this " + subData.subNum +" ? It cannot be undone.")){
                 $.ajax
                 ({
                     type: "POST",
                     url: "controller/bscs.php",
                     data:
                     {
-                        deleteDB    :   deleteDB,
+                        deleteSubjectDB    :   deleteSubjectDB,
                         subNum     :   subNum,
                     },
                     async: false,

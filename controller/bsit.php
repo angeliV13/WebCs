@@ -14,6 +14,7 @@
 
     // Add Subject Controller
     if(isset($_POST['addITSubjectDB'])){
+        $subNum = $_POST['subNum'];
         $courseCode = $_POST['courseCode'];
         $courseName = $_POST['courseName'];
         $subLec = $_POST['subLec'];
@@ -28,6 +29,7 @@
 
     // Edit Subject Controller
     if(isset($_POST['editITSubjectDB'])){
+        $subNum = $_POST['subNum'];
         $courseCode = $_POST['courseCode'];
         $courseName = $_POST['courseName'];
         $subLec = $_POST['subLec'];
@@ -37,7 +39,7 @@
         $semester = $_POST['semester'];
         $yearLevel = $_POST['yearLevel'];
 
-        echo editSubject($subNum , $courseCode, $courseName, $subLec, $subLab, $subUnit, $courseID, $semester, $yearLevel);
+        echo editSubject($subNum,$courseCode, $courseName, $subLec, $subLab, $subUnit, $courseID, $semester, $yearLevel);
     }
     // Delete Data Controller
     if(isset($_POST['deleteSubjectDB'])){
