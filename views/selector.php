@@ -29,10 +29,10 @@
             case 'progBSCS':
                 return "program/bscs.php";
                 break;
-                // ---------------------------------INSTRUCTORS-------------------------------
-                // Instructors
-            case 'instructors':
-                return "Faculty/instructors.php";
+                // ---------------------------------FACULTY-------------------------------
+                // FACULTY
+            case 'faculty':
+                return "faculty/faculty.php";
                 break;
 
                 // ---------------------------------SCHEDULING-------------------------------

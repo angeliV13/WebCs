@@ -2,13 +2,13 @@
     // Viewing room
     function viewRoom(){
         include('dbConnection.php');
-        
-        
+
+
         $query = "SELECT * FROM tbl_room"; //QUERY CODE
         $sql = mysqli_query($conn, $query) or die("System Error: " . mysqli_error($conn)); //SENDING QUERY TO DATABASE
 
         $totalData = 0;
-        
+
         // DOES QUERY CONTAINS ROWS?
         if(mysqli_num_rows($sql)>0){ 
             $count = 1;
@@ -21,7 +21,7 @@
 
                 // Extract Data from the QUERY
                 extract($row);
-                
+
                 // WHERE EXTRACTED DATA WILL BE STORED
                 $data[] = [
                     $checkbox = '<input class="w-100" type="checkbox" name="check1" id="check'. $roomNum .'">',
@@ -31,8 +31,8 @@
                     $roomType,
                     ($roomAvail==8)? "All Day" : $roomAvail,
                     $buttons = '<div class="btn-group d-flex">
-                                    <button class="btn btn-warning" onclick="showEditForm('. $roomNum .')" type"button">Edit</button>
-                                    <button class="btn btn-danger" onclick="showDeleteForm('. $roomNum .')" type"button">Delete</button>
+                                    <button class="btn btn-warning" onclick="showRoomEditForm('. $roomNum .')" type"button">Edit</button>
+                                    <button class="btn btn-danger" onclick="showRoomDeleteForm('. $roomNum .')" type"button">Delete</button>
                                 </div>',
                 ];
             }
@@ -76,14 +76,12 @@
         return ($query);
     }
 
-    
-
     // Editing Rooms to Database
     function editRoom($roomNum, $roomName , $roomLoc, $roomType, $roomAvailability=8){
 
         include('dbConnection.php');
         $query = "UPDATE `tbl_room` 
-                    SET `roomName`='" . $roomName . "',`roomLocation`='" . $roomLoc . "',`roomType`='" . $roomType . "',`roomAvail`='" .$roomAvailability. "' 
+                    SET `roomName`='" . $roomName . "',`roomLocation`='" . $roomLoc . "',`roomType`='" . $roomType . "',`roomAvail`='" .$roomAvailability. "';
                     WHERE roomNum = '". $roomNum ."'"; //QUERY CODE
         $sql = mysqli_query($conn, $query) or die("System Error: " . mysqli_error($conn));
         

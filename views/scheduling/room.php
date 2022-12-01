@@ -54,9 +54,6 @@
         </div>
     </div>
 
-        
-    <div></div>
-
 </div>
 <!-- /.container-fluid -->
 
@@ -65,7 +62,7 @@
         aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form action="#" method="post"></form>
+            <form action="#" method="post">
                 <div class="modal-header">
                     <h5 class="modal-title" id="addRoomLabel">Adding Room</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
@@ -145,15 +142,14 @@
                     <div class="d-none justify-content-between mb-4">
                         <label for="editRoomNum">Room ID</label>
                         <input type="text" name="editRoomNum" id="editRoomNum" maxlength="10">
-                        
                     </div>
                     <!-- Room Name -->
                     <div class="d-flex justify-content-between mb-4">
                         <label for="editRoomName">Room</label>
                         <input type="text" name="editRoomName" id="editRoomName" maxlength="10">
-                        
+
                     </div>
-                    
+
                     <!-- Room Location -->
                     <div class="d-flex justify-content-between mb-4">
                         <label for="editRoomLoc">Room Location</label>

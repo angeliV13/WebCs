@@ -72,9 +72,9 @@ $("#addRoomButton").click(function(){
 
 
 // SHOW EDIT ROOM
-function showEditForm(roomNum){
+function showRoomEditForm(roomNum){
     // alert("Show Edit");
-    var showEditDB = true;
+    var showRoomEditDB = true;
     // alert(roomNum);
 
     // Clearing Edit Forms
@@ -92,7 +92,7 @@ function showEditForm(roomNum){
         url: "controller/room.php",
         data:
         {
-            showEditDB  :   showEditDB,
+            showRoomEditDB  :   showRoomEditDB,
             roomNum      :   roomNum,
         },
         async: false,
@@ -129,7 +129,7 @@ $("#editRoomButton").click(function(){
     // alert("Success");
     var editRoomDB = true;
 
-    var roomNum = $("#editRoomNum").val()
+    var roomNum = $("#editRoomNum").val();
     var roomName = $("#editRoomName").val();
     var roomLoc = $("#editRoomLoc").val();
     var roomType = $("input[name='editRoomType']:checked").val();
@@ -161,10 +161,10 @@ $("#editRoomButton").click(function(){
 
 });
 
-// SHOW EDIT ROOM
-function showDeleteForm(roomNum){
+// SHOW DELETE ROOM
+function showRoomDeleteForm(roomNum){
     // alert("Show Edit");
-    var showEditDB = true;
+    var showRoomEditDB = true;
     // alert(roomNum);
     
     $.ajax
@@ -173,7 +173,7 @@ function showDeleteForm(roomNum){
         url: "controller/room.php",
         data:
         {
-            showEditDB  :   showEditDB,
+            showRoomEditDB  :   showRoomEditDB,
             roomNum     :   roomNum,
         },
         async: false,
@@ -181,6 +181,7 @@ function showDeleteForm(roomNum){
         {
 
             var roomData = $.parseJSON(response);
+            console.log(response);
             var deleteDB = true;
 
             if(confirm("Are you sure you want to delete the room " + roomData.roomName +"? This cannot be undone.")){

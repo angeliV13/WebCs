@@ -4,5 +4,6 @@
     if(isset($_POST['checkDB'])){
         echo viewAccount();
     }
+    
 
 ?>

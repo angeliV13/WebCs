@@ -45,14 +45,14 @@
 
      <!-- Nav Item - Guest Lecturers -->
      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsegLecturers"
-            aria-expanded="true" aria-controls="collapsegLecturers">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFaculty"
+            aria-expanded="true" aria-controls="collapseFaculty">
             <span>Guest Lecturers</span>
         </a>
-        <div id="collapsegLecturers" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseFaculty" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Instructors Options:</h6>
-                <a class="collapse-item" href="index.php?val=instructors">Instructors List</a>
+                <h6 class="collapse-header">Faculty Options:</h6>
+                <a class="collapse-item" href="index.php?val=faculty">Faculty List</a>
             </div>
         </div>
     </li>

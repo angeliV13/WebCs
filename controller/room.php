@@ -7,7 +7,7 @@
     }
 
     // Show GET Room Data Controller
-    if(isset($_POST['showEditDB'])){
+    if(isset($_POST['showRoomEditDB'])){
         $roomNum = $_POST['roomNum'];
         echo getRoomNum($roomNum);
     }
@@ -33,7 +33,7 @@
     }
 
     // Delete Data Controller
-    if(isset($_POST['deleteDB'])){
+    if(isset($_POST['deleteRoomDB'])){
         $roomNum = $_POST['roomNum'];
         echo deleteRoom($roomNum);
     }

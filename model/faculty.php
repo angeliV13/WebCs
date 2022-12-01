@@ -1,16 +1,15 @@
 <?php
     // Viewing room
-    function viewInstructors(){
+    function viewFaculty(){
         include('dbConnection.php');
-        
-        
+
         $query = "SELECT * FROM tbl_faculty"; //QUERY CODE
         $sql = mysqli_query($conn, $query) or die("System Error: " . mysqli_error($conn)); //SENDING QUERY TO DATABASE
 
         $totalData = 0;
-        
+
         // DOES QUERY CONTAINS ROWS?
-        if(mysqli_num_rows($sql)>0){ 
+        if(mysqli_num_rows($sql)>0){
             $count = 1;
             $checkbox = "";
             $buttons = "";
@@ -21,21 +20,17 @@
 
                 // Extract Data from the QUERY
                 extract($row);
-                
+
                 // WHERE EXTRACTED DATA WILL BE STORED
                 $data[] = [
                     $checkbox = '<input class="w-100" type="checkbox" name="check1" id="check'. $facNum .'">',
                     $count++,
                     $facID,
-                    $facFName,
-                    $facMName, 
-                    $facLName,
-                    $facType,
-                    $facAvailability,
-                    ($facAvailability)? "FT" : $facAvailability,
+                    $facLName . ", " . $facFName . " " . $facMName,
+                    ($facAvailability = "FT")? "Fulltime": $facAvailability,
                     $buttons = '<div class="btn-group d-flex">
-                                    <button class="btn btn-warning" onclick="showEditForm('. $facNum .')" type"button">Edit</button>
-                                    <button class="btn btn-danger" onclick="showEditForm('. $facNum .')" type"button">Delete</button>
+                                    <button class="btn btn-warning" onclick="showFacultyEditForm('. $facNum .')" type"button">Edit</button>
+                                    <button class="btn btn-danger" onclick="showFacultyDeleteForm('. $facNum .')" type"button">Delete</button>
                                 </div>',
                 ];
             }
@@ -52,14 +47,14 @@
 
     }
 
-    // Getting Room Data
-    function getfacNum($facNum){
+    // Getting Faculty Data
+    function getFacNum($facNum){
 
         include('dbConnection.php');
         $query = "SELECT * FROM tbl_faculty WHERE facNum = '". $facNum ."'"; //QUERY CODE
         $sql = mysqli_query($conn, $query) or die("System Error: " . mysqli_error($conn)); //SENDING QUERY TO DATABASE
 
-        if(mysqli_num_rows($sql)>0){ 
+        if(mysqli_num_rows($sql)>0){
 
             $facultyData = array();
             // GETTING QUERIED DATA
@@ -69,30 +64,39 @@
         }
     }
 
-    //Adding Rooms to Database
-    function addInstructors($facID , $facFName, $facMName, $facLName, $facType, $facAvailability,){
+    //Adding faculty to Database
+    function addFaculty($facNum, $facID , $facFName, $facMName, $facLName, $facAvailability){
 
         include('dbConnection.php');
-        $query = "INSERT INTO `tbl_faculty`(`facNum`, `facID`, `facFName`, `facMName`, `facLName`, `facTeach`, `facType`, `facAvailability`) VALUES ('0','','','','','','','')"; 
+        $query = "INSERT INTO `tbl_faculty`(`facNum`, `facID`, `facFName`, `facMName`, `facLName`, `facAvailability`) VALUES ('". $facID ."','". $facNum."', '" .$facFName."','".$facMName."', '".$facLName."', '".$facAvailability."')"; 
+        var_dump($query);
         $sql = mysqli_query($conn, $query) or die("System Error: " . mysqli_error($conn));
-        
-        return ($query);
-    }
 
-    
-
-    // Editing Rooms to Database
-    function editRoom($roomNum, $roomName , $roomLoc, $roomType, $roomAvailability=8){
-
-        include('dbConnection.php');
-        $query = "UPDATE `tbl_room` 
-                    SET `roomName`='" . $roomName . "',`roomLocation`='" . $roomLoc . "',`roomType`='" . $roomType . "',`roomAvail`='" .$roomAvailability. "' 
-                    WHERE roomNum = '". $roomNum ."'"; //QUERY CODE
-        $sql = mysqli_query($conn, $query) or die("System Error: " . mysqli_error($conn));
-        
         return ($query);
     }
 
 
+    // Editing Faculty to Database
+    function editFaculty($facNum, $facID , $facFName, $facMName, $facLName, $facAvailability){
+
+        include('dbConnection.php');
+        $query = "UPDATE `tbl_faculty`
+                    SET `facNum`='" . $facNum. "',`facID`='" . $facID. "',`facFName`='" . $facFName. "',`facMName`='" . $facMName. "',`facLName`='" . $facLName. "',`facAvailability`='" . $facAvailability. "'
+                    WHERE `facNum` = '". $facNum ."'"; //QUERY CODE
+        $sql = mysqli_query($conn, $query) or die("System Error: " . mysqli_error($conn));
+
+        return ($query);
+    }
     
+    //Delete  Faculty to Database
+    function deleteFaculty($facNum){
+
+        include('dbConnection.php');
+        $query = "DELETE FROM `tbl_faculty`
+                    WHERE `facNum` = '". $facNum ."'"; //QUERY CODE //QUERY CODE
+        $sql = mysqli_query($conn, $query) or die("System Error: " . mysqli_error($conn));
+
+        return ($query);
+    }
+
 ?>
