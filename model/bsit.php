@@ -23,7 +23,7 @@
 
                 // WHERE EXTRACTED DATA WILL BE STORED
                 $data[] = [
-                    $checkbox = '<input class="w-100" type="checkbox" name="check1" id="check'. $subNum .'">',
+                    // $checkbox = '<input class="w-100" type="checkbox" name="check1" id="check'. $subNum .'">',
                     $count++,
                     $courseCode,
                     $courseName,

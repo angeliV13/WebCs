@@ -135,7 +135,6 @@ function showITEditForm(subNum){
             else if(subData.semester==2){
                 $("input[name='editsemester']:radio[value='2']").attr("checked", true);
             }
-
             
             $('#editITSubjectModal').modal('toggle');
         },
@@ -183,9 +182,9 @@ $("#editITSubjectButton").click(function(){
         async: false,
         success: function(response)
         {
-            // console.log(response);
-            alert("Update Successfully");
-            location.reload();
+            console.log(response);
+            // alert("Update Successfully");
+            // location.reload();
         },
         error: function(response)
         {

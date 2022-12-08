@@ -1,9 +1,9 @@
 <?php
     // Viewing room
-    function viewFaculty(){
+    function viewCreateAccountListing(){
         include('dbConnection.php');
 
-        $query = "SELECT * FROM tbl_faculty"; //QUERY CODE
+        $query = "SELECT * FROM tbl_account"; //QUERY CODE
         $sql = mysqli_query($conn, $query) or die("System Error: " . mysqli_error($conn)); //SENDING QUERY TO DATABASE
 
         $totalData = 0;
@@ -23,7 +23,7 @@
 
                 // WHERE EXTRACTED DATA WILL BE STORED
                 $data[] = [
-                    // $checkbox = '<input class="w-100" type="checkbox" name="check1" id="check'. $facNum .'">',
+                    $checkbox = '<input class="w-100" type="checkbox" name="check1" id="check'. $facNum .'">',
                     $count++,
                     // $facNum,
                     $facID,

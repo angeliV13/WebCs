@@ -1,15 +1,24 @@
 {
     "cSpell.words": [
+        "addaccount",
         "addcourse",
+        "addemail",
+        "addemployee",
         "addfac",
+        "addposition",
         "addsemester",
         "addsub",
         "addyear",
         "Bscs",
+        "editaccount",
         "editcourse",
+        "editemail",
+        "editemployee",
         "editfac",
+        "editposition",
         "editsemester",
         "edityear",
+        "getaccount",
         "IDDB",
         "Instructorsmodal"
     ]

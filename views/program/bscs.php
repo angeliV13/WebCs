@@ -3,7 +3,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Programs</h1>
+        <h1 class="h3 mb-0 text-danger font-weight-bold">Bachelor of Science in Computer Science</h1>
         <a href="#"  class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" data-toggle="modal" data-target="#addCsSubjectModal"><i
                 class="fas fa-plus fa-sm text-white-50"></i> Add Subject</a>
     </div>
@@ -12,7 +12,7 @@
     <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-danger">Bachelor of Science in Computer Science</h6>
+                <!-- <h6 class="m-0 font-weight-bold text-danger">Bachelor of Science in Computer Science</h6> -->
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -69,16 +69,12 @@
         <div class="modal-content">
             <form action="#" method="post">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addSubjectLabel">Adding Subject</h5>
+                    <h5 class="modal-title" id="addCsSubjectLabel">Adding Subject</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <!-- <div class="d-flex justify-content-between mb-4">
-                        <label for="addsubNum ">Subject Number</label>
-                        <input type="text" name="addsubNum" id="addsubNum" maxlength="50">
-                    </div> -->
                     <!-- Course Code-->
                     <div class="d-flex justify-content-between mb-4">
                         <label for="addcourseCode">Course Code</label>
@@ -204,7 +200,7 @@
                         <input type="text" name="editcourseID" id="editcourseID" maxlength="50">
                     </div>
                     
-                    <!-- Year Level-->
+                    <!--semester-->
                     <div class="d-flex justify-content-between mb-1">
                         <label for="editsemester">Semester</label>
                         <div class="d-flex">

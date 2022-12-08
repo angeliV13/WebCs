@@ -17,12 +17,19 @@
 
     <script src="assets/js/schedule.js"></script>
     <script src="assets/js/room.js"></script>
+    <script src="assets/js/section.js"></script>
     <script src="assets/js/faculty.js"></script>
     <script src="assets/js/createSchedule.js"></script>
+    <script src="assets/js/viewSchedule.js"></script>
     <script src="assets/js/bsit.js"></script>
     <script src="assets/js/bscs.js"></script>
     
+    <script src="assets/js/createAccount.js"></script>
     <script src="assets/js/login.js"></script>
+    
+    <script src="assets/js/accountsListing.js"></script>
+
+    <script src="assets/js/print.js"></script>
 
 
 

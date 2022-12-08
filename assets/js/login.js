@@ -4,7 +4,7 @@ $("#loginAccount").click(function(){
     var loginAccountDB = true;
 
     var userName  = $("#userName").val();
-    var userPassWord   = $("#userPassword").val();
+    var userPassword   = $("#userPassword").val();
     
     $.ajax({
         type: "POST",
@@ -13,16 +13,21 @@ $("#loginAccount").click(function(){
         {
             loginAccountDB  :   loginAccountDB,
             userName        :   userName,
-            userPassword    :   userPassword
+            userPassword    :   userPassword,
         },
-        success: function(response)
-        {
-            // var item = JSON.parse(response);
+        success: function(response){
             console.log(response);
-            // location.reload();
+            if(response==1){
+                alert("Login Success");
+                window.location = window.location.href.split('?')[0];
+            }
+            else{
+                alert("Username/Password is incorrect");
+                window.location.reload();
+            }
+            
         },
-        error: function(e)
-        {
+        error: function(e){
             console.log(e);
         }
     });

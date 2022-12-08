@@ -46,7 +46,7 @@ $("#addFacultyButton").click(function(){
     var facFName  = $("#addfacFName").val(); 
     var facMName = $("#addfacMName").val();
     var facLName = $("#addfacLName").val();
-    var facAvailability = $("addfacAvailability").val();
+    var facAvailability = $("addfacAvailability").val();    
 
     $.ajax
     ({
@@ -64,8 +64,9 @@ $("#addFacultyButton").click(function(){
         },
         async: false,
         success: function(response)
+        
         {
-            // console.log(response);
+            console.log(response);
             alert("Faculty Added Successfully");
             location.reload();
         },
@@ -139,6 +140,9 @@ $("#editFacultyButton").click(function(){
     var facLName = $("#editfacLName").val();
     var facAvailability = $("#editfacAvailability").val();
     // alert(roomType);
+
+    
+
     $.ajax
     ({
         type: "POST",
@@ -152,13 +156,14 @@ $("#editFacultyButton").click(function(){
             facMName : facMName,
             facLName : facLName,
             facAvailability : facAvailability,
+            
         },
         async: false,
         success: function(response)
         {
-            console.log(response);
-            // alert("Update Successfully");
-            // location.reload();
+            // console.log(response);
+            alert("Update Successfully");
+            location.reload();
         },
         error: function(response)
         {

@@ -3,7 +3,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Rooms</h1>
+        <h1 class="h3 mb-0 text-danger font-weight-bold">Rooms</h1>
         <a href="#"  class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" data-toggle="modal" data-target="#addRoomModal"><i
                 class="fas fa-plus fa-sm text-white-50"></i> Add Room</a>
     </div>
@@ -12,16 +12,13 @@
     <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-danger">Room List</h6>
+                <!-- <h6 class="m-0 font-weight-bold text-danger">Room List</h6> -->
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="viewRoom" width="100%" cellspacing="0">
                          <thead>
                             <tr class="text-center">
-                                <th>
-                                    <input class="w-100" type="checkbox" name="check1" id="check1">
-                                </th>
                                 <th>No.</th>
                                 <th>Room</th>
                                 <th>Room Location</th>

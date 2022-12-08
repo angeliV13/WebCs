@@ -49,6 +49,7 @@ $("#addCsSubjectButton").click(function(){
     var courseID        = $("#addcourseID").val();
     var semester        = $("#addsemester").val();
     var yearLevel       = $("#addyearLevel").val();
+    
 
     $.ajax
     ({
@@ -165,7 +166,7 @@ $("#editCsSubjectButton").click(function(){
     $.ajax
     ({
         type: "POST",
-        url: "controller/bsit.php",
+        url: "controller/bscs.php",
         data:
         {
             editCsSubjectDB  :   editCsSubjectDB,
@@ -182,12 +183,13 @@ $("#editCsSubjectButton").click(function(){
         async: false,
         success: function(response)
         {
+            console.log(response);
             alert("Update Successfully");
             location.reload();
         },
-        error: function(response)
+        error: function(e)
         {
-            console.log(response);
+            console.log(e);
         }
     });
 

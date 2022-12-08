@@ -1,43 +1,34 @@
 <?php
-    require('../model/createSchedule.php');
+    require('../model/viewSchedule.php');
 
-    // Dropdowns
-    if(isset($_POST['scheduleCreateSelection'])){
-        $myArray = [];
-        $getSemester = [];
-        $getAcadYear = [];
-        $getSection = [];
+    // // Dropdowns
+    // if(isset($_POST['scheduleCreateSelection'])){
+    //     $myArray = [];
+    //     $getSemester = [];
+    //     $getAcadYear = [];
+    //     $getSection = [];
 
-        $getAcadYear = acadYear();
-        $getSemester = semester();
-        $getSection = section();
-        $getInstructor = instructor();
-        $getRooming = rooming();
+    //     $getAcadYear = acadYear();
+    //     $getSemester = semester();
+    //     $getSection = section();
 
-        $myArray = [
-            $getAcadYear,
-            $getSemester,
-            $getSection,
-            $getInstructor,
-            $getRooming,
-        ];
-        echo json_encode($myArray);
-    }
+    //     $myArray = [
+    //         $getAcadYear,
+    //         $getSemester,
+    //         $getSection
+    //     ];
+    //     echo json_encode($myArray);
+    // }
 
-    // Get Data
-    if(isset($_POST['getDataDB'])){
-        $myData = [];
+    // Get Schedule per Section
+    if(isset($_POST['getScheduleDB'])){
         $section = $_POST['getSection'];
         $semester = $_POST['getSemester'];
         $acadYear = $_POST['getAcadYear'];
+        
+        $scheduleArray = getSchedule($section, $semester, $acadYear);
 
-        $rooms = getRooms("",0);
-        $faculty = getFaculty();
-        $subject = getSubjects($section, $semester, $acadYear);
-
-        $myData = [$rooms, $faculty, $subject];
-        // var_dump($myData);
-        echo (json_encode($myData));
+        echo (json_encode($scheduleArray));
     }
 
     // Get Subjects
@@ -73,11 +64,9 @@
         $getAcadYear  = $_POST['getAcadYear'];
         $roomNum = $_POST['roomNum'];
         $facNum = (isset($_POST['facNum']))? $_POST['facNum'] : "";
-        $numItems = $_POST['numItems'];
 
         $availableRooms = checkAvailableRoom($courseCode, $courseDelivery, $hours, $getSemester, $getAcadYear, $roomNum);
         $availableFaculty = checkAvailableFaculty($availableRooms, $courseCode, $hours, $getSemester, $getAcadYear, $roomNum, $facNum);
-
         echo $availableFaculty;
     }
 

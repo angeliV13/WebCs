@@ -17,8 +17,8 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="index.php">
-            <span>HOME PAGE</span></a>
+        <a class="nav-link" href="index.php?val=dashboard">
+            <span>Dashboard</span></a>
     </li>
 
     <!-- Divider -->
@@ -26,7 +26,7 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Dashboard
+        Options
     </div>
     <!-- Nav Item - Accounts -->
     <li class="nav-item">
@@ -37,7 +37,6 @@
         <div id="collapseAccount" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Account Options:</h6>
-                <a class="collapse-item" href="index.php?val=createAccount">Create an Account</a>
                 <a class="collapse-item" href="index.php?val=accountsListing">Accounts Listing</a>
             </div>
         </div>
@@ -82,7 +81,9 @@
             <div class="bg-white py-3 collapse-inner rounded">
                 <h6 class="collapse-header">Scheduling Options:</h6>
                 <a class="collapse-item" href="index.php?val=createSchedule">Create Schedule</a>
-                <a class="collapse-item" href="index.php?val=viewSchedule">View Schedules</a>          
+                <a class="collapse-item" href="index.php?val=viewScheduleStudent">Student Schedules</a>
+                <a class="collapse-item" href="index.php?val=viewScheduleInstructor">Faculty Schedules</a>
+                <a class="collapse-item" href="index.php?val=viewScheduleRoom">Room Schedules</a>    
             </div>
         </div>
     </li>
@@ -91,6 +92,12 @@
     <li class="nav-item active">
         <a class="nav-link" href="index.php?val=room">
             <span>Rooms</span></a>
+    </li>
+
+    <!-- Nav Item - Section -->
+    <li class="nav-item active">
+        <a class="nav-link" href="index.php?val=section">
+            <span>Sections</span></a>
     </li>
 
 
@@ -104,7 +111,7 @@
 
     <!-- Nav Item - Logout -->
     <li class="nav-item active bg-dark">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="index.php?val=logout">
             <span>Logout</span></a>
     </li>
     <!-- Divider -->

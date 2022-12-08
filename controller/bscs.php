@@ -14,7 +14,7 @@
 
     // Add Subject Controller
     if(isset($_POST['addCsSubjectDB'])){
-        $subNum = $_POST['subNum'];
+        // $subNum = $_POST['subNum'];
         $courseCode = $_POST['courseCode'];
         $courseName = $_POST['courseName'];
         $subLec = $_POST['subLec'];
@@ -24,7 +24,7 @@
         $semester = $_POST['semester'];
         $yearLevel = $_POST['yearLevel'];
 
-        echo editSubject($subNum , $courseCode, $courseName, $subLec, $subLab, $subUnit, $courseID, $semester, $yearLevel);
+        echo addSubject($courseCode, $courseName, $subLec, $subLab, $subUnit, $courseID, $semester, $yearLevel);
     }
 
     // Edit Subject Controller

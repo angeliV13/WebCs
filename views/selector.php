@@ -6,6 +6,11 @@
                 return "index.html";
                 break;
 
+                // Logout
+            case 'logout':
+                return "logout.php";
+                break;
+
                 // Dashboard
             case 'dashboard':
                 return "dashboard.php";
@@ -13,8 +18,13 @@
                 // ---------------------------------Account-------------------------------
                 // Create an Account 
             case 'createAccount':
-                return "account/createaccount.php";
+                return "account/createAccount.php";
                 break;
+
+            case 'login':
+                return "account/login.php";
+                break;
+
                 // Accounts Listing
             case 'accountsListing':
                     return "account/accountsListing.php";
@@ -42,14 +52,26 @@
                 break;
 
                 // View  Schedule 
-            case 'viewSchedule':
-                return "scheduling/viewSchedule.php";
+            case 'viewScheduleStudent':
+                return "scheduling/viewSchedule_std.php";
+                break;
+
+            case 'viewScheduleInstructor':
+                return "scheduling/viewSchedule_ins.php";
+                break;
+
+            case 'viewScheduleRoom':
+                return "scheduling/viewSchedule_room.php";
                 break;
 
                 // ----------------------------------LOG OUT--------------------------------
                 // Room
             case 'room':
                 return "scheduling/room.php";
+                break;
+
+            case 'section':
+                return "scheduling/section.php";
                 break;
         }
     }

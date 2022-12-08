@@ -10860,8 +10860,8 @@ a:focus {
   }
 }
 
-.bg-login-image {
-  background: url("https://source.unsplash.com/K4mSJ7kc0As/600x800");
+.bg-login {
+  background: url("https://img.freepik.com/free-vector/white-abstract-wallpaper_23-2148830027.jpg?w=1060&t=st=1670004764~exp=1670005364~hmac=7b6d241c6784fe21bbf3831185c83467a0762604c0592ba8558b405c977a43c6/600x800");
   background-position: center;
   background-size: cover;
 }

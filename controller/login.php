@@ -6,10 +6,9 @@
 
         $userName = $_POST['userName'];
         $userPassword = $_POST['userPassword'];
-
         $accountDetail = accountLogin($userName, $userPassword);
 
-        echo "Success";
+        echo ($accountDetail);
 
     }
 

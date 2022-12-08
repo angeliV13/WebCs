@@ -3,16 +3,15 @@
 <html lang="en">
 
     <?php include('views/header/head.php'); ?>
-    <?php include('controller/session.php'); ?>
-    <?php echo(md5(1234)); ?>
+    <?php // echo md5("1234"); ?>
+    <?php session_start(); ?>
 
     <body id="page-top">
 
         <!-- Page Wrapper -->
         <div id="wrapper">
         <?php
-            $_SESSION['user'] = 1;
-            if (isset($_SESSION['user'])) {
+            if (isset($_SESSION['userID'])) {
         ?>    
             <!--side bar -->
             <?php include('views/sidebar/sidebar.php'); ?>
@@ -44,7 +43,7 @@
                 <footer class="sticky-footer bg-white">
                     <div class="container my-auto">
                         <div class="copyright text-center my-auto">
-                            <span>Copyright &copy; Your Website 2021</span>
+                            <span>Copyright &copy; WEBCS 2022</span>
                         </div>
                     </div>
                 </footer>

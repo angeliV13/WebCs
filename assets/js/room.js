@@ -150,6 +150,7 @@ $("#editRoomButton").click(function(){
         async: false,
         success: function(response)
         {
+            console.log(response);
             alert("Update Successfully");
             location.reload();
         },
@@ -182,7 +183,7 @@ function showRoomDeleteForm(roomNum){
 
             var roomData = $.parseJSON(response);
             console.log(response);
-            var deleteDB = true;
+            var deleteRoomDB = true;
 
             if(confirm("Are you sure you want to delete the room " + roomData.roomName +"? This cannot be undone.")){
                 $.ajax
@@ -191,7 +192,7 @@ function showRoomDeleteForm(roomNum){
                     url: "controller/room.php",
                     data:
                     {
-                        deleteDB    :   deleteDB,
+                        deleteRoomDB    :   deleteRoomDB,
                         roomNum     :   roomNum,
                     },
                     async: false,

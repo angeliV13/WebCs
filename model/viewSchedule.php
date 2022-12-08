@@ -2,7 +2,7 @@
 
     function acadYear(){
         include('dbConnection.php');
-        $query = "SELECT * FROM `tbl_acadyear` ORDER BY ayID DESC;"; //QUERY CODE
+        $query = "SELECT * FROM `tbl_acadyear`"; //QUERY CODE
         $sql = mysqli_query($conn, $query) or die("System Error: " . mysqli_error($conn)); //SENDING QUERY TO DATABASE
         
         $acadYearData = array();
@@ -48,36 +48,40 @@
         }
     }
 
-    function instructor(){
+    function getSchedule($section, $semester, $acadYear){
         include('dbConnection.php');
-        $query = "SELECT * FROM `tbl_faculty`"; //QUERY CODE
+        $subjectData = [];
+
+        // Executing Subject Query
+        $query = "SELECT * FROM `tbl_schedule`
+                    WHERE schedSemID = '" . $semester . "' AND schedAYID = '". $acadYear . "' AND secNum = '". $section ."'"; //QUERY CODE
+        // var_dump($query);
+
+        
         $sql = mysqli_query($conn, $query) or die("System Error: " . mysqli_error($conn)); //SENDING QUERY TO DATABASE
         
-        $instructorData = array();
-        if(mysqli_num_rows($sql)>0){ 
+        while ($row = mysqli_fetch_assoc($sql))
+        {
+            // Extract Data from the QUERY
+            // extract($row);
             
-            while($row = mysqli_fetch_assoc($sql)){
-
-                $instructorData[] = $row;
-            }
-            return ($instructorData);
-        }
-    }
-
-    function rooming(){
-        include('dbConnection.php');
-        $query = "SELECT * FROM `tbl_room`"; //QUERY CODE
-        $sql = mysqli_query($conn, $query) or die("System Error: " . mysqli_error($conn)); //SENDING QUERY TO DATABASE
-        
-        $roomingData = array();
-        if(mysqli_num_rows($sql)>0){ 
+            // WHERE EXTRACTED DATA WILL BE STORED
+            $subjectData[] = $row;
+            // [
+            //     $subNum,
+            //     $subComlab,
+            //     $subLab,
+            //     $subLec,
+            //     $subType,
+            //     $subUnit,
+            //     $yearLevel,
+            //     $semester,
+            // ];
+            // End Extraction
             
-            while($row = mysqli_fetch_assoc($sql)){
-
-                $roomingData[] = $row;
-            }
-            return ($roomingData);
-        }
+        }  
+        // Increment the Section
+        return ($subjectData);
     }
 
     function getCourse($condition, $choice= 0){
@@ -140,15 +144,11 @@
      function getFaculty($subType=0, $faceNum = ""){
 
         include('dbConnection.php');
-        $query = "SELECT * FROM `tbl_faculty` WHERE 1 ";
-        
-        if($subType>0){
-            $query .= "AND `facTeach` = '" . $subType . "' ";
-        } 
+        $query = "SELECT * FROM `tbl_faculty` WHERE `facTeach` = '" . $subType . "'";
         if($faceNum!=""){
-            $query .= "AND `facNum` = '" . $faceNum . "' ";
+            $query .= "AND `facNum` = '" . $faceNum . "'";
         } 
-        // var_dump($query);
+
         $sql = mysqli_query($conn, $query) or die("System Error: " . mysqli_error($conn));
         
         while ($row = mysqli_fetch_assoc($sql))
@@ -170,7 +170,7 @@
         return $facultyData;
     }
 
-    function getSubjects($section, $semester, $acadYear, $courseCode=""){
+    function getSubjects($section, $semester, $acadYear, $courseCode){
         include('dbConnection.php');
 
         $subjectData = [];

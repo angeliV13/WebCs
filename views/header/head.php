@@ -22,7 +22,9 @@
     <link href="assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     
     <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/fullcalendar.js"></script>
+    
+    <script type="text/javascript" src="assets/js/printThis.js"></script>
+
 
 
 </head>

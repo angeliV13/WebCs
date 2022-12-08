@@ -24,7 +24,7 @@
 
                 // WHERE EXTRACTED DATA WILL BE STORED
                 $data[] = [
-                    $checkbox = '<input class="w-100" type="checkbox" name="check1" id="check'. $roomNum .'">',
+                    // $checkbox = '<input class="w-100" type="checkbox" name="check1" id="check'. $roomNum .'">',
                     $count++,
                     $roomName,
                     $roomLocation,
@@ -81,7 +81,7 @@
 
         include('dbConnection.php');
         $query = "UPDATE `tbl_room` 
-                    SET `roomName`='" . $roomName . "',`roomLocation`='" . $roomLoc . "',`roomType`='" . $roomType . "',`roomAvail`='" .$roomAvailability. "';
+                    SET `roomName`='" . $roomName . "',`roomLocation`='" . $roomLoc . "',`roomType`='" . $roomType . "',`roomAvail`='" .$roomAvailability. "'
                     WHERE roomNum = '". $roomNum ."'"; //QUERY CODE
         $sql = mysqli_query($conn, $query) or die("System Error: " . mysqli_error($conn));
         

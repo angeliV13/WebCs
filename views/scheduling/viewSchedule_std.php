@@ -1,7 +1,20 @@
 <?php
+    include('model/dbConnection.php');
+
     $ayID = (isset($_POST['academicYear']))? $_POST['academicYear']:"" ;
     $semester = (isset($_POST['semester']))? $_POST['semester']:"" ;
     $section = (isset($_POST['section']))? $_POST['section']:"" ;
+    $sectionName = "";
+
+    $query = "SELECT secName FROM `tbl_section` WHERE secNum = '$section'"; //QUERY CODE
+    $sql = mysqli_query($conn, $query) or die("System Error: " . mysqli_error($conn)); //SENDING QUERY TO DATABASE
+
+    if(mysqli_num_rows($sql)>0){
+        while($row = mysqli_fetch_assoc($sql)){
+            $sectionName = $row['secName'];
+        }
+    }
+
 
 ?>
 
@@ -9,8 +22,9 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
 <!-- Page Heading -->
-<div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-danger font-weight-bold ">Create Schedule</h1>
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h3 class="m-0 font-weight-bold text-danger text-center">View Student Schedule</h3>
+        <button class="btn btn-danger" id="printSched">Print</button>
     </div>
 
     <!-- Content Row -->
@@ -18,10 +32,10 @@
     <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <!-- <h6 class="m-0 font-weight-bold text-danger text-center">Create Schedule</h6> -->
+                <!-- <h6 class="m-0 font-weight-bold text-danger text-center">View Schedule</h6> -->
             </div>
             <div class="card-body">
-                <form id="submitSched" method="post">
+                <form id="viewMySched" method="post">
                     <div class="row">
                         <div class="mr-4">
                             <label for="academicYear">Academic Year: </label>
@@ -52,17 +66,22 @@
                         <div class="mr-4">
                             <label for="section">Section: </label>
                             <select name="section" id="section">
-                                <option value="">Select Section</option>
+                                <?php
+                                    if($section==""){
+                                        echo ('<option value="">Select Section</option>');
+                                    }else{
+                                        echo ('<option value="'.$section.'">' . $sectionName . '</option>');
+                                    }
+                                ?>
                             </select>
-                            <button class="btn btn-sm btn-danger" id="selectSection" type="button">Select Section</button>
-                            <button class="btn btn-sm btn-danger d-none" id="selectSectionUpdate" type="button">Update Section</button>
+                            <button class="btn btn-sm btn-danger" id="viewSchedNow" type="submit" name="viewSchedNow">View</button>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
                             <div class="theCalendar">
                                 <div class="table-responsive">
-                                    <table class="table table-bordered" id="createSchedule" width="100%" cellspacing="0">
+                                    <table class="table table-bordered" id="viewSectionSchedule" width="100%" cellspacing="0">
                                         <thead>
                                             <tr class="text-center">
                                                 <th>Time</th>
@@ -78,7 +97,7 @@
                                         <tbody>
                                             <?php 
                                                 $weekDays = ['m[]','t[]','w[]','th[]','f[]','sa[]','su[]'];
-                                                include('model/dbConnection.php');
+                                                
                                                 $query = "SELECT * FROM `tbl_time`"; //QUERY CODE
                                                 $sql = mysqli_query($conn, $query) or die("System Error: " . mysqli_error($conn)); //SENDING QUERY TO DATABASE
 
@@ -104,10 +123,12 @@
                                                                 while($rowItem = mysqli_fetch_assoc($sqlItem)){
                                                 ?>
                                                 
-                                                <td>
-                                                    <div class="">
-                                                        <?php echo ($rowItem['courseName']);?>
-                                                    </div>
+                                                <td> 
+                                                    <?php echo ($rowItem['courseName']);?>
+                                                    <!-- <div class="d-flex justify-content-between">
+                                                        <button bclass="btn btn-warning btn-sm" onclick="editSched(<?php echo ($rowItem['schedNum'])?>">Edit</button>
+                                                        <button class="btn btn-danger btn-sm" onclick="deleteSched(<?php echo ($rowItem['schedNum'])?>">Delete</button>
+                                                    </div> -->
                                                 </td>
 
                                             
@@ -118,7 +139,9 @@
                                             ?>
                                                 <td>
                                                     <div class="form-check">
-                                                        <input class="form-check-input myHour" name="<?php echo $weekDays[$day-1];?>" type="checkbox" value="<?php echo $time;?>" id="flexCheckDefault">
+                                                    
+                                                        <!-- <input class="form-check-input myHour" name="<?php //echo $weekDays[$day-1];?>" type="checkbox" value="<?php //echo $time;?>" id="flexCheckDefault"> -->
+                                                        <?php //echo $weekDays[$day-1];?>
                                                     </div>
                                                 </td>
 
@@ -138,25 +161,25 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="showToolbar" class="col-4">
+                        <div id="showToolbar" class="col-4 d-none">
                             <div class="">
-                                <div class="row mb-1">
-                                    <label class="col-4" for="subject">Subject: </label>
-                                    <select class="form-select col" name="subject" id="subject">
+                                <div class="">
+                                    <label for="subject">Subject: </label>
+                                    <select name="subject" id="subject">
                                         <option value="">Select Subject</option>
                                     </select>
                                 </div>
                                 
-                                <div class="row mb-1">
-                                    <label class="col-4" for="room">Room: </label>
-                                    <select class="form-select col" name="room" id="room">
+                                <div class="">
+                                    <label for="room">Room: </label>
+                                    <select name="room" id="room">
                                         <option value="">Select Room</option>
                                     </select>
                                 </div>
 
-                                <div class="row mb-1">
-                                    <label class="col-4" for="instructor">Instructor: </label>
-                                    <select class="form-select col" name="instructor" id="instructor">
+                                <div class="">
+                                    <label for="instructor">Instructor: </label>
+                                    <select name="instructor" id="instructor">
                                         <option value="">Select instructor</option>
                                     </select>
                                 </div>

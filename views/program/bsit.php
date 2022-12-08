@@ -3,7 +3,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Programs</h1>
+    <h1 class="h3 mb-0 text-danger font-weight-bold">Bachelor of Science in Information Technology</h1>
         <a href="#"  class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" data-toggle="modal" data-target="#addITSubjectModal"><i
                 class="fas fa-plus fa-sm text-white-50"></i> Add Subject</a>
     </div>
@@ -12,16 +12,14 @@
     <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-danger">Bachelor of Science in Information Technology</h6>
+                <!-- <h6 class="m-0 font-weight-bold text-danger">Bachelor of Science in Information Technology</h6> -->
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="viewItSubject" width="100%" cellspacing="0">
                          <thead>
                             <tr class="text-center">
-                                <th>
-                                    <input class="w-100" type="checkbox" name="check1" id="check1">
-                                </th>
+
                                 <th>No.</th>
                                 <th>Course Code</th>
                                 <th>Course Name</th>   
@@ -116,7 +114,7 @@
                     </div>
 
                     <!-- Course ID -->
-                   <<div class="d-flex justify-content-between mb-5">
+                   <div class="d-flex justify-content-between mb-5">
                         <label for="addcourseID"> Course ID</label>
                         <input type="text" name="addcourseID" id="addcourseID" maxlength="50">
                     </div>
