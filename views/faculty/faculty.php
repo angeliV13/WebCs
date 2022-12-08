@@ -3,7 +3,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Instructors List</h1>
+        <h1 class="h3 mb-0 text-danger font-weight-bold">Guest Lecturers</h1>
         <a href="#"  class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" data-toggle="modal" data-target="#addFacultyModal"><i
                 class="fas fa-plus fa-sm text-white-50"></i> Add Faculty</a>
     </div>
@@ -12,16 +12,13 @@
     <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-danger">"Faculty List"</h6>
+                <!-- <h6 class="m-0 font-weight-bold text-danger">"Faculty List"</h6> -->
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="viewFaculty" width="100%" cellspacing="0">
                          <thead>
                             <tr class="text-center">
-                                <th>
-                                    <input class="w-100" type="checkbox" name="check1" id="check1">
-                                </th>
                                 <th>No.</th>
                                 <th>Faculty ID</th>
                                 <th>Name (LN, FN, MN) </th>
@@ -68,27 +65,27 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body aria-required">
                     <!-- Faculty ID -->
                     <div class="d-flex justify-content-between mb-4">
                         <label for="addfacID">Faculty ID</label>
-                        <input type="text" name="addfacID" id="addfacID" maxlength="50">
+                        <input type="text" name="addfacID" id="addfacID" maxlength="50" >
                     </div>
                     
                     <!-- Faculty FName -->
                     <div class="d-flex justify-content-between mb-4">
                         <label for="addfacLName"> Last Name </label>
-                        <input type="text" name="addfacLName" id="addfacLName" maxlength="50">
+                        <input type="text" name="addfacLName" id="addfacLName" maxlength="50" >
                     </div>
                     <!-- Faculty FName --> 
                     <div class="d-flex justify-content-between mb-4">
                         <label for="addfacFName"> First Name </label>
-                        <input type="text" name="addfacFName" id="addfacFName" maxlength="50">
+                        <input type="text" name="addfacFName" id="addfacFName" maxlength="50" >
                     </div>
 
                     <div class="d-flex justify-content-between mb-4">
                         <label for="addfacMName"> Middle Initial </label>
-                        <input type="text" name="addfacMName" id="addfacMName" maxlength="50">
+                        <input type="text" name="addfacMName" id="addfacMName" maxlength="50"  >
                     </div>
 
                     <!-- Faculty Availability -->
@@ -96,7 +93,7 @@
                         <label for="addfacAvailability">Faculty Availability</label>
                         <div class="d-flex">
                             <div class="mr-2">
-                                <input type="radio" name="addfacAvailability" id="addfacAvailability" value="FT">
+                                <input type="radio" name="addfacAvailability" id="addfacAvailability" value="FT" >
                                 <label for="addfacAvailability">Full time</label>
                             </div>
                         </div>
@@ -104,7 +101,7 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <button class="btn btn-danger" type="button" id="addFacultyButton">Add Faculty</button>
+                    <button class="btn btn-danger" type="buttons" id="addFacultyButton">Add Faculty</button>
                 </div>
             </form>
         </div>
